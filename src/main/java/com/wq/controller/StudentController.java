@@ -9,6 +9,7 @@ import com.wq.util.ResponseUtil;
 import com.wq.util.StringUtil;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
+import org.apache.commons.collections.map.HashedMap;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -79,6 +80,10 @@ public class StudentController {
     @ResponseBody
     public JSONArray getMajorList(String departmentKey) {
         List<Map<String, Object>> list = studentService.getMajorList(departmentKey);
+        Map<String, Object> map = new HashedMap();
+        map.put("value", "");
+        map.put("text", "请选择...");
+        list.add(map);
         if (list.size() > 0) {
             JSONArray jsonArray = JSONArray.fromObject(list);
             return jsonArray;
@@ -93,6 +98,10 @@ public class StudentController {
     @ResponseBody
     public JSONArray getClassList(String majorKey) {
         List<Map<String, Object>> list = studentService.getClassList(majorKey);
+        Map<String, Object> map = new HashedMap();
+        map.put("value", "");
+        map.put("text", "请选择...");
+        list.add(map);
         if (list.size() > 0) {
             JSONArray jsonArray = JSONArray.fromObject(list);
             return jsonArray;

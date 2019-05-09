@@ -111,7 +111,7 @@
             });
             //触发学院选项  
             $("#departmentKey").combobox({
-                onHidePanel: function () {
+                onChange: function () {
                     $("#majorKey").combobox('setValue', ''); //清空专业 
                     $("#classKey").combobox('setValue', ''); //清空班级
                     var departmentKey = $('#departmentKey').combobox('getValue');
@@ -122,6 +122,12 @@
                         type: "POST",
                         dataType: "json",
                         success: function (majorList) {
+                            console.log("majorList:" + majorList);
+                            if (majorList) {
+                                alert(1);
+                            } else {
+                                alert(2);
+                            }
                             $("#majorKey").combobox("loadData", majorList);
                         }
 
@@ -138,7 +144,7 @@
             });
             //触发专业选项时  
             $("#majorKey").combobox({
-                onHidePanel: function () {
+                onChange: function () {
                     $("#classKey").combobox('setValue', ''); //清空班级
                     var majorKey = $('#majorKey').combobox('getValue');
                     $.ajax({
