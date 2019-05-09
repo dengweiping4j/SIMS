@@ -14,6 +14,11 @@ public interface StudentService {
     public List<Student> findStudent(Map<String, Object> map);
 
     /**
+     * 获取学院列表
+     */
+    public List<Map<String, Object>> getDepartmentList();
+
+    /**
      * @param map
      * @return
      */
@@ -36,4 +41,8 @@ public interface StudentService {
      * @return
      */
     public int deleteStudent(Integer pkid);
+
+    List<Map<String,Object>> getMajorList(String departmentKey);
+
+    List<Map<String,Object>> getClassList(String majorKey);
 }

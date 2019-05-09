@@ -77,33 +77,16 @@
 <div region="west" style="width: 200px;height:500px;" title="导航菜单"
      split="true">
     <div class="easyui-accordion">
-       <%-- <div title="文章管理"
-        data-options="selected:true,iconCls:'icon-wenzhangs'"
-        style="padding: 10px;height:10px;">
-        <a
-        href="javascript:openTab(' 文章管理-ke','articleManage-ke.jsp','icon-wenzhang')"
-        class="easyui-linkbutton"
-        data-options="plain:true,iconCls:'icon-wenzhang'"
-        style="width: 150px;"> kindEditor(推荐)</a>
-        </div>
-        <div title="图片管理" data-options="iconCls:'icon-shouye'"
-        style="padding:10px">
-        <a
-        href="javascript:openTab(' 图片设置','pictureManage.jsp?type=1&grade=1','icon-tupians')"
-        class="easyui-linkbutton"
-        data-options="plain:true,iconCls:'icon-tupian'"
-        style="width: 150px;"> 图片设置</a>
-        </div>--%>
         <div title="学生管理" data-options="iconCls:'icon-item'"
              style="padding:10px;border:none;">
-            <a href="javascript:openTab(' 信息管理','studentManage.jsp','icon-man')"
+            <a href="javascript:openTab(' 学生信息管理','studentManage.jsp','icon-man')"
                class="easyui-linkbutton"
                data-options="plain:true,iconCls:'icon-man'" style="width: 150px;">
-                信息管理</a>
-            <a href="javascript:openTab(' 成绩管理','studentManage.jsp','icon-man')"
+                学生信息管理</a>
+            <a href="javascript:openTab(' 学生成绩管理','studentManage.jsp','icon-man')"
                class="easyui-linkbutton"
                data-options="plain:true,iconCls:'icon-man'" style="width: 150px;">
-                成绩管理</a>
+                学生成绩管理</a>
         </div>
         <div title="系统管理" data-options="iconCls:'icon-item'"
              style="padding:10px;border:none;">

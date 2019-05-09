@@ -59,6 +59,48 @@ public class StudentController {
     }
 
     /**
+     * 获取学院列表Controller
+     */
+    @RequestMapping(value = "/getDepartmentList", method = RequestMethod.POST)
+    @ResponseBody
+    public JSONArray getDepartmentList() {
+        List<Map<String, Object>> list = studentService.getDepartmentList();
+        if (list.size() > 0) {
+            JSONArray jsonArray = JSONArray.fromObject(list);
+            return jsonArray;
+        }
+        return null;
+    }
+
+    /**
+     * 获取专业列表Controller
+     */
+    @RequestMapping(value = "/getMajorList", method = RequestMethod.POST)
+    @ResponseBody
+    public JSONArray getMajorList(String departmentKey) {
+        List<Map<String, Object>> list = studentService.getMajorList(departmentKey);
+        if (list.size() > 0) {
+            JSONArray jsonArray = JSONArray.fromObject(list);
+            return jsonArray;
+        }
+        return null;
+    }
+
+    /**
+     * 获取班级列表Controller
+     */
+    @RequestMapping(value = "/getClassList", method = RequestMethod.POST)
+    @ResponseBody
+    public JSONArray getClassList(String majorKey) {
+        List<Map<String, Object>> list = studentService.getClassList(majorKey);
+        if (list.size() > 0) {
+            JSONArray jsonArray = JSONArray.fromObject(list);
+            return jsonArray;
+        }
+        return null;
+    }
+
+    /**
      * 添加或修改学生信息
      *
      * @return

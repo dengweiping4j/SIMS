@@ -31,11 +31,26 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public int addStudent(Student student) {
-       return studentMapper.insert(student);
+        return studentMapper.insert(student);
     }
 
     @Override
     public int deleteStudent(Integer pkid) {
         return 0;
+    }
+
+    @Override
+    public List<Map<String, Object>> getDepartmentList() {
+        return studentMapper.getDepartmentList();
+    }
+
+    @Override
+    public List<Map<String, Object>> getMajorList(String departmentKey) {
+        return studentMapper.getMajorList(departmentKey);
+    }
+
+    @Override
+    public List<Map<String, Object>> getClassList(String majorKey) {
+        return studentMapper.getClassList(majorKey);
     }
 }

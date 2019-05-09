@@ -40,4 +40,10 @@ public interface StudentMapper {
      * @return
      */
     public Long getTotalStudent(Map<String, Object> map);
+
+    List<Map<String,Object>> getDepartmentList();
+
+    List<Map<String,Object>> getMajorList(String departmentKey);
+
+    List<Map<String,Object>> getClassList(String majorKey);
 }

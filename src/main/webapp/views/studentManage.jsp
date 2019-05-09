@@ -73,22 +73,95 @@
         function openStudentAddDialog() {
             $("#dlg").dialog("open").dialog("setTitle", "添加学生信息");
             method = "POST";
-            var year=new Date().getFullYear();
-            var data = [
-                {'text' : year+'年', 'value' : year,'selected':'year'},
-                {'text' : year-1+'年', 'value' : year-1},
-                {'text' : year-2+'年', 'value' : year-2},
-                {'text' : year-3+'年', 'value' : year-3},
-                {'text' : year-4+'年', 'value' : year-4}
+            var year = new Date().getFullYear();
+            //入学年份下拉框
+            var yearData = [
+                {'text': year + '年', 'value': year, 'selected': 'year'},
+                {'text': year - 1 + '年', 'value': year - 1},
+                {'text': year - 2 + '年', 'value': year - 2},
+                {'text': year - 3 + '年', 'value': year - 3},
+                {'text': year - 4 + '年', 'value': year - 4}
             ];
-
             $('#year').combobox({
-                textField : 'text',
-                valueField : 'value',
-                panelHeight : 'auto',
-                data : data
+                textField: 'text',
+                valueField: 'value',
+                panelHeight: 'auto',
+                data: yearData
             })
+            //级联下拉框
+            findcombobox();
         }
+
+        // 学院-专业-班级 级联下拉框
+        function findcombobox() {
+            //学院下拉框
+            $.ajax({
+                async: false,
+                type: "post",
+                url: url + "/getDepartmentList",//请求后台数据
+                dataType: "json",
+                success: function (departmentList) {
+                    $("#departmentKey").combobox({//往下拉框赋值
+                        data: departmentList,
+                        valueField: "value",//value值
+                        textField: "text",//文本值
+                        panelHeight: "auto"
+                    })
+                }
+            });
+            //触发学院选项  
+            $("#departmentKey").combobox({
+                onHidePanel: function () {
+                    $("#majorKey").combobox('setValue', ''); //清空专业 
+                    $("#classKey").combobox('setValue', ''); //清空班级
+                    var departmentKey = $('#departmentKey').combobox('getValue');
+                    $.ajax({
+                        async: false,
+                        url: url + "/getMajorList",
+                        data: {departmentKey: departmentKey},
+                        type: "POST",
+                        dataType: "json",
+                        success: function (majorList) {
+                            $("#majorKey").combobox("loadData", majorList);
+                        }
+
+                    });
+                }
+
+            });
+            $('#majorKey').combobox({
+                editable: false, //不可编辑状态    
+                cache: false,
+                panelHeight: 'auto',//自动高度适合    
+                valueField: 'value',
+                textField: 'text'
+            });
+            //触发专业选项时  
+            $("#majorKey").combobox({
+                onHidePanel: function () {
+                    $("#classKey").combobox('setValue', ''); //清空班级
+                    var majorKey = $('#majorKey').combobox('getValue');
+                    $.ajax({
+                        async: false,
+                        url: url + "/getClassList",
+                        cache: false,
+                        data: {majorKey: majorKey},
+                        type: "POST",
+                        dataType: "json",
+                        success: function (classList) {
+                            $("#classKey").combobox("loadData", classList);
+                        }
+                    });
+                }
+            });
+            $('#classKey').combobox({
+                editable: false, //不可编辑状态    
+                cache: false,
+                panelHeight: 'auto',//自动高度适合    
+                valueField: 'value',
+                textField: 'text'
+            });
+        };
 
         function saveStudent() {
             var userName = $("#userName").val();

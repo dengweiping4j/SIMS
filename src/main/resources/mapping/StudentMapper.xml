@@ -13,7 +13,7 @@
     </resultMap>
     <sql id="Base_Column_List">
     pkid, xh, xm, year, class_key, major_key, department_key, phone
-  </sql>
+    </sql>
     <select id="findStudent" parameterType="Map" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
@@ -26,6 +26,20 @@
         <if test="start!=null and size!=null">
             limit #{start},#{size}
         </if>
+    </select>
+    <select id="getDepartmentList" resultType="java.util.HashMap">
+        select t.pkid as value,t.department_name as text
+        from department t
+    </select>
+    <select id="getMajorList" parameterType="String" resultType="java.util.HashMap">
+        select t.pkid as value,t.major_name as text
+        from major t
+        WHERE t.department_key=#{departmentKey}
+    </select>
+    <select id="getClassList" parameterType="String" resultType="java.util.HashMap">
+        select t.pkid as value,t.class_name as text
+        from class t
+        WHERE t.major_key=#{majorKey}
     </select>
     <select id="getTotalStudent" parameterType="Map" resultType="Long">
         select count(*) from student
