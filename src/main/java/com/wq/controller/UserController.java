@@ -20,9 +20,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * 用户管理Controller类
- */
+/*
+　　* @Description 用户管理Controller类
+　　* @author dengweiping
+　　* @date 2019/5/10 10:32
+　　*/
 @Controller
 @RequestMapping("/users")
 public class UserController {
@@ -31,11 +33,14 @@ public class UserController {
     private UserService userService;
     private static final Logger log = Logger.getLogger(UserController.class);// 日志文件
 
-    /**
-     * 登录
-     * @param user
-     * @return
-     */
+    /*
+    　　* @Description 登录
+    　　* @param [user]
+    　　* @return com.wq.common.Result
+    　　* @throws
+    　　* @author dengweiping
+    　　* @date 2019/5/10 10:32
+    　　*/
     @RequestMapping(value = "/cookie", method = RequestMethod.POST)
     @ResponseBody
     public Result login(User user) {
@@ -48,7 +53,7 @@ public class UserController {
         User resultUser = userService.login(user);
         log.info("request: user/login , user: " + user.toString());
         if (resultUser == null) {
-            return ResultGenerator.genFailResult("请认真核对账号、密码！");
+            return ResultGenerator.genFailResult("账号或密码错误,请重新登录！");
         } else {
             resultUser.setPassword("PASSWORD");
             Map data = new HashMap();
@@ -57,17 +62,17 @@ public class UserController {
         }
     }
 
-
-    /**
-     * @param page
-     * @param rows
-     * @param s_user
-     * @param response
-     * @return
-     * @throws Exception
-     */
+    /*
+    　　* @Description 用户列表查询
+    　　* @param [page, rows, s_user, response]
+    　　* @return java.lang.String
+    　　* @throws
+    　　* @author dengweiping
+    　　* @date 2019/5/10 10:33
+    　　*/
     @RequestMapping(value = "/datagrid", method = RequestMethod.POST)
-    public String list(@RequestParam(value = "page", required = false) String page, @RequestParam(value = "rows", required = false) String rows, User s_user, HttpServletResponse response) throws Exception {
+    public String list(@RequestParam(value = "page", required = false) String page,
+                       @RequestParam(value = "rows", required = false) String rows, User s_user, HttpServletResponse response) throws Exception {
         PageBean pageBean = new PageBean(Integer.parseInt(page), Integer.parseInt(rows));
         Map<String, Object> map = new HashMap<>();
         map.put("userName", StringUtil.formatLike(s_user.getUserName()));
@@ -84,12 +89,14 @@ public class UserController {
         return null;
     }
 
-    /**
-     * 添加或修改管理员
-     *
-     * @return
-     * @throws Exception
-     */
+    /*
+    　　* @Description 添加用户
+    　　* @param [user]
+    　　* @return com.wq.common.Result
+    　　* @throws
+    　　* @author dengweiping
+    　　* @date 2019/5/10 10:34
+    　　*/
     @RequestMapping(value = "", method = RequestMethod.POST)
     @ResponseBody
     public Result save(@RequestBody User user) throws Exception {
@@ -104,13 +111,14 @@ public class UserController {
         }
     }
 
-    /**
-     * 修改
-     *
-     * @param user
-     * @return
-     * @throws Exception
-     */
+    /*
+    　　* @Description 修改用户
+    　　* @param [user]
+    　　* @return com.wq.common.Result
+    　　* @throws
+    　　* @author dengweiping
+    　　* @date 2019/5/10 10:34
+    　　*/
     @RequestMapping(value = "", method = RequestMethod.PUT)
     @ResponseBody
     public Result update(@RequestBody User user) throws Exception {
@@ -125,13 +133,14 @@ public class UserController {
         }
     }
 
-    /**
-     * 删除管理员
-     *
-     * @param ids
-     * @return
-     * @throws Exception
-     */
+    /*
+    　　* @Description 删除用户
+    　　* @param [ids]
+    　　* @return com.wq.common.Result
+    　　* @throws
+    　　* @author dengweiping
+    　　* @date 2019/5/10 10:34
+    　　*/
     @RequestMapping(value = "/{ids}", method = RequestMethod.DELETE)
     @ResponseBody
     public Result delete(@PathVariable(value = "ids") String ids) throws Exception {

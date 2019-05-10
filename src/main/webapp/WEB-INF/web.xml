@@ -49,6 +49,15 @@
     <url-pattern>/</url-pattern>
   </servlet-mapping>
 
+  <jsp-config>
+    <jsp-property-group>
+      <!-- 为哪些JSP页面引入一个公共页面 -->
+      <url-pattern>*.jsp</url-pattern>
+      <!-- 被引入的公共页面 -->
+      <include-prelude>/views/common/common.jsp</include-prelude>
+    </jsp-property-group>
+  </jsp-config>
+
   <!--错误页面配置,这里只是简单的配置了一下 -->
   <error-page>
     <error-code>404</error-code>

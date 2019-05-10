@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-    <title>perfect-ssm - 登录</title>
+    <title>学生管理系统 - 登录</title>
     <meta name="keywords" content="perfect-ssm">
     <meta name="description" content="perfect-ssm">
 
@@ -20,10 +20,7 @@
     <!--[if lt IE 9]>
     <meta http-equiv="refresh" content="0;ie.html"/>
     <![endif]-->
-    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="http://apps.bdimg.com/libs/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <script src="/js/login.js"></script>
-    <script src="/js/common.js"></script>
 </head>
 
 <body class="gray-bg">

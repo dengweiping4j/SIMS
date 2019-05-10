@@ -33,13 +33,13 @@ public interface StudentMapper {
      * @param map
      * @return
      */
-    public List<Student> findStudent(Map<String, Object> map);
+    List<Student> findStudent(Map<String, Object> map);
 
     /**
      * @param map
      * @return
      */
-    public Long getTotalStudent(Map<String, Object> map);
+    Long getTotalStudent(Map<String, Object> map);
 
     List<Map<String,Object>> getDepartmentList();
 

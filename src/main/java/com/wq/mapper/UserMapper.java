@@ -15,7 +15,7 @@ public interface UserMapper {
      * @param user
      * @return
      */
-    public User login(User user);
+    User login(User user);
 
     /**
      * 查找用户列表
@@ -23,13 +23,13 @@ public interface UserMapper {
      * @param map
      * @return
      */
-    public List<User> findUsers(Map<String, Object> map);
+    List<User> findUsers(Map<String, Object> map);
 
     /**
      * @param map
      * @return
      */
-    public Long getTotalUser(Map<String, Object> map);
+    Long getTotalUser(Map<String, Object> map);
 
     /**
      * 实体修改
@@ -37,7 +37,7 @@ public interface UserMapper {
      * @param user
      * @return
      */
-    public int updateUser(User user);
+    int updateUser(User user);
 
     /**
      * 添加用户
@@ -45,7 +45,7 @@ public interface UserMapper {
      * @param user
      * @return
      */
-    public int addUser(User user);
+    int addUser(User user);
 
     /**
      * 删除用户
@@ -53,5 +53,5 @@ public interface UserMapper {
      * @param id
      * @return
      */
-    public int deleteUser(Integer id);
+    int deleteUser(Integer id);
 }

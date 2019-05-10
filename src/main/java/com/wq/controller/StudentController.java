@@ -5,12 +5,14 @@ import com.wq.common.ResultGenerator;
 import com.wq.entity.PageBean;
 import com.wq.entity.Student;
 import com.wq.service.StudentService;
+import com.wq.util.DataGridUtil;
 import com.wq.util.ResponseUtil;
 import com.wq.util.StringUtil;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.commons.collections.map.HashedMap;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,33 +31,27 @@ public class StudentController {
 
     @Resource
     private StudentService studentService;
+    @Autowired
+    private DataGridUtil dataGridUtil;
     private static final Logger log = Logger.getLogger(StudentController.class);// 日志文件
 
     /**
      * @param page
      * @param rows
-     * @param student
      * @param response
      * @return
      * @throws Exception
      */
     @RequestMapping(value = "/datagrid", method = RequestMethod.POST)
-    public String list(@RequestParam(value = "page", required = false)
-                               String page, @RequestParam(value = "rows", required = false)
-                               String rows, Student student, HttpServletResponse response) throws Exception {
-        PageBean pageBean = new PageBean(Integer.parseInt(page), Integer.parseInt(rows));
+    public String list(@RequestParam(value = "page", required = false) String page,
+                       @RequestParam(value = "rows", required = false) String rows,
+                       HttpServletResponse response) throws Exception {
         Map<String, Object> map = new HashMap<>();
-        map.put("xm", StringUtil.formatLike(student.getXm()));
-        map.put("start", pageBean.getStart());
-        map.put("size", pageBean.getPageSize());
-        List<Student> studentList = studentService.findStudent(map);
-        Long total = studentService.getTotalStudent(map);
-        JSONObject result = new JSONObject();
-        JSONArray jsonArray = JSONArray.fromObject(studentList);
-        result.put("rows", jsonArray);
-        result.put("total", total);
-        log.info("request: student/list , map: " + map.toString());
-        ResponseUtil.write(response, result);
+        map.put("where", "1");
+        map.put("page", page);
+        map.put("size", rows);
+        map.put("table", "student");
+        dataGridUtil.selectDataGrid(response, map);
         return null;
     }
 

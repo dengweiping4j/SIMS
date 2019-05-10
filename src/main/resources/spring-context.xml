@@ -9,6 +9,7 @@
     <context:component-scan base-package="com.wq.mapper"/>
     <context:component-scan base-package="com.wq.service"/>
     <context:component-scan base-package="com.wq.redis"/>
+    <bean id="dataGridUtil" class="com.wq.util.DataGridUtil"/>
 
     <!-- druid监控配置 -->
     <import resource="classpath:spring-context-druid-stat.xml"/>
