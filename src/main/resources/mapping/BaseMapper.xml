@@ -5,6 +5,6 @@
         select * from ${table} limit #{start},#{size}
     </select>
     <select id="getGridTotal" parameterType="Map" resultType="Long">
-        select count(*) from ${table} where 1=#{where}
+        select count(*) from ${table}
     </select>
 </mapper>

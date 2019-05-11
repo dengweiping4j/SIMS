@@ -32,7 +32,7 @@
             <h1 class="logo-name">13</h1>
 
         </div>
-        <h3>欢迎使用 perfect-ssm</h3>
+        <h3>欢迎使用 学生管理系统</h3>
 
         <form class="m-t" role="form" id="adminlogin" method="post"
               name="adminlogin" onsubmit="return false" action="##">

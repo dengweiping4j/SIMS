@@ -7,8 +7,6 @@
     <title>学生管理系统主页</title>
     <script type="text/javascript">
         checkCookie();
-        var url;
-
         function addTab(url, text, iconCls) {
             var content = "<iframe frameborder=0 scrolling='auto' style='width:100%;height:100%' src='${pageContext.request.contextPath}/views/"
                 + url + "'></iframe>";
@@ -68,7 +66,7 @@
     <div class="easyui-accordion">
         <div title="学生管理" data-options="iconCls:'icon-item'"
              style="padding:10px;border:none;">
-            <a href="javascript:openTab(' 学生信息管理','studentManage.jsp','icon-man')"
+            <a href="javascript:openTab(' 学生信息管理','student/studentManage.jsp','icon-man')"
                class="easyui-linkbutton"
                data-options="plain:true,iconCls:'icon-man'" style="width: 150px;">
                 学生信息管理</a>

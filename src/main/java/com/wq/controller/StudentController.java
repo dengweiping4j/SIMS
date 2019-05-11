@@ -32,28 +32,7 @@ public class StudentController {
     @Resource
     private StudentService studentService;
     @Autowired
-    private DataGridUtil dataGridUtil;
     private static final Logger log = Logger.getLogger(StudentController.class);// 日志文件
-
-    /**
-     * @param page
-     * @param rows
-     * @param response
-     * @return
-     * @throws Exception
-     */
-    @RequestMapping(value = "/datagrid", method = RequestMethod.POST)
-    public String list(@RequestParam(value = "page", required = false) String page,
-                       @RequestParam(value = "rows", required = false) String rows,
-                       HttpServletResponse response) throws Exception {
-        Map<String, Object> map = new HashMap<>();
-        map.put("where", "1");
-        map.put("page", page);
-        map.put("size", rows);
-        map.put("table", "student");
-        dataGridUtil.selectDataGrid(response, map);
-        return null;
-    }
 
     /**
      * 获取学院列表Controller
@@ -76,10 +55,6 @@ public class StudentController {
     @ResponseBody
     public JSONArray getMajorList(String departmentKey) {
         List<Map<String, Object>> list = studentService.getMajorList(departmentKey);
-        Map<String, Object> map = new HashedMap();
-        map.put("value", "");
-        map.put("text", "请选择...");
-        list.add(map);
         if (list.size() > 0) {
             JSONArray jsonArray = JSONArray.fromObject(list);
             return jsonArray;
@@ -94,10 +69,6 @@ public class StudentController {
     @ResponseBody
     public JSONArray getClassList(String majorKey) {
         List<Map<String, Object>> list = studentService.getClassList(majorKey);
-        Map<String, Object> map = new HashedMap();
-        map.put("value", "");
-        map.put("text", "请选择...");
-        list.add(map);
         if (list.size() > 0) {
             JSONArray jsonArray = JSONArray.fromObject(list);
             return jsonArray;
@@ -106,15 +77,15 @@ public class StudentController {
     }
 
     /**
-     * 添加或修改学生信息
+     * 添加学生信息
      *
      * @return
      * @throws Exception
      */
-    @RequestMapping(value = "", method = RequestMethod.POST)
+    @RequestMapping(value = "addSave", method = RequestMethod.POST)
     @ResponseBody
     public Result save(@RequestBody Student student) throws Exception {
-        int resultTotal = 0;
+        int resultTotal;
         resultTotal = studentService.addStudent(student);
         if (resultTotal > 0) {
             return ResultGenerator.genSuccessResult();
@@ -124,7 +95,7 @@ public class StudentController {
     }
 
     /**
-     * 修改
+     * 修改学生信息
      *
      * @param student
      * @return

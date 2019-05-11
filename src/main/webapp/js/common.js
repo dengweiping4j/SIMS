@@ -1,4 +1,3 @@
-
 function setCookie(name, value) {
     var Days = 30;
     var exp = new Date();
@@ -23,8 +22,8 @@ function delCookie(name) {
 }
 
 function checkCookie() {
-    if (getCookie("userName") == null || getCookie("roleName") == null) {
-        $.alert("请先登录!");
+    if (getCookie("userName") == null) {
+        $.messager.alert("系统提示", "请先登录!", "warming");
         window.location.href = "login.jsp";
     }
 }
