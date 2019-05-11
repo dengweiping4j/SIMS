@@ -11,38 +11,42 @@ public interface StudentService {
      * @param map
      * @return
      */
-    public List<Student> findStudent(Map<String, Object> map);
+    List<Student> findStudent(Map<String, Object> map);
 
     /**
      * 获取学院列表
      */
-    public List<Map<String, Object>> getDepartmentList();
+    List<Map<String, Object>> getDepartmentList();
 
     /**
      * @param map
      * @return
      */
-    public Long getTotalStudent(Map<String, Object> map);
+    Long getTotalStudent(Map<String, Object> map);
 
     /**
      * @param student
      * @return
      */
-    public int updateStudent(Student student);
+    int updateStudent(Student student);
 
     /**
      * @param student
      * @return
      */
-    public int addStudent(Student student);
+    int addStudent(Student student);
 
-    /**
-     * @param pkid
-     * @return
-     */
-    public int deleteStudent(Integer pkid);
+    /*
+    　　* @Description 删除学生
+    　　* @param pkids
+    　　* @return int
+    　　* @throws
+    　　* @author dengweiping
+    　　* @date 2019/5/11 16:18
+    　　*/
+    int deleteStudent(String pkids);
 
-    List<Map<String,Object>> getMajorList(String departmentKey);
+    List<Map<String, Object>> getMajorList(String departmentKey);
 
-    List<Map<String,Object>> getClassList(String majorKey);
+    List<Map<String, Object>> getClassList(String majorKey);
 }

@@ -1,4 +1,4 @@
-var url = "${pageContext.request.contextPath}/student";
+var url = "/student";
 var method;
 
 function searchXS() {
@@ -9,22 +9,23 @@ function searchXS() {
 
 function deleteStudnet() {
     var selectedRows = $("#dg").datagrid('getSelections');
+    console.log(selectedRows);
     if (selectedRows.length == 0) {
         $.messager.alert("系统提示", "请选择要删除的数据！");
         return;
     }
-    var strIds = [];
+    var strPkids = [];
     for (var i = 0; i < selectedRows.length; i++) {
-        strIds.push(selectedRows[i].id);
+        strPkids.push(selectedRows[i].pkid);
     }
-    var ids = strIds.join(",");
+    var pkids = strPkids.join(",");
     $.messager.confirm("系统提示", "您确认要删除这<font color=red>"
         + selectedRows.length + "</font>条数据吗？", function (r) {
         if (r) {
             $.ajax({
                 type: "DELETE",//方法类型
                 dataType: "json",//预期服务器返回的数据类型
-                url: "/users/" + ids,//url
+                url: url + "/delete/" + pkids,//url
                 data: {},
                 success: function (result) {
                     console.log(result);//打印服务端返回的数据
@@ -53,7 +54,7 @@ function deleteStudnet() {
 }
 
 function openStudentAddDialog() {
-    $("#dlg").dialog("open").dialog("setTitle", "添加学生信息");
+    $("#dlg").dialog("open").dialog("setTitle", "添加学生信息", 'refresh', "");
     method = "POST";
     var year = new Date().getFullYear();
     //入学年份下拉框
@@ -153,7 +154,20 @@ function findcombobox() {
 function saveStudent() {
     var xm = $("#xm").val();
     var xh = $("#xh").val();
-    var data = {"xm": xm, "xh": xh};
+    var year = $("#year").combobox("getValue");
+    var departmentKey = $("#departmentKey").combobox("getValue");
+    var majorKey = $("#majorKey").combobox("getValue");
+    var classKey = $("#classKey").combobox("getValue");
+    var phone = $("#phone").val();
+    var data = {
+        "xm": xm,
+        "xh": xh,
+        "year": year,
+        "departmentKey": departmentKey,
+        "majorKey": majorKey,
+        "classKey": classKey,
+        "phone": phone
+    };
 
     if ($('#fm').form('validate')) {
         $.ajax({
@@ -193,14 +207,11 @@ function openStudentModifyDialog() {
     var row = selectedRows[0];
     $("#dlg").dialog("open").dialog("setTitle", "编辑学生信息");
     $('#fm').form('load', row);
-    $("#password").val("******");
-    $("#userId").val(row.id);
     method = "PUT";
 }
 
 function resetValue() {
-    $("#userName").val("");
-    $("#password").val("");
+    $('#fm').form('clear');
 }
 
 function closeStudentDialog() {

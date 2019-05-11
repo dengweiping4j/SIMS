@@ -10,13 +10,18 @@
 <body style="margin:1px;">
 <table id="dg" title="学生信息管理" class="easyui-datagrid" fitColumns="true"
        pagination="true" rownumbers="true"
-       url="${pageContext.request.contextPath}/common/dataGrid?table=student" fit="true"
+       url="${pageContext.request.contextPath}/common/dataGrid?table=v_student" fit="true"
        toolbar="#tb">
     <thead>
     <tr>
         <th field="cb" checkbox="true" align="center"></th>
         <th field="xm" width="100" align="center">学生姓名</th>
         <th field="xh" width="50" align="center">学号</th>
+        <th field="year" width="50" align="center">年级</th>
+        <th field="department_name" width="50" align="center">学院</th>
+        <th field="major_name" width="50" align="center">专业</th>
+        <th field="class_name" width="50" align="center">班级</th>
+        <th field="phone" width="50" align="center">联系电话</th>
     </tr>
     </thead>
 </table>
@@ -85,14 +90,20 @@
                     <font color="red">*</font>
                 </td>
             </tr>
+            <tr>
+                <td>联系电话：</td>
+                <td><input type="text" id="phone" name="classKey" class="easyui-textbox"/>
+                </td>
+            </tr>
         </table>
     </form>
 </div>
 
 <div id="dlg-buttons">
     <a href="javascript:saveStudent()" class="easyui-linkbutton"
-       iconCls="icon-ok">保存</a> <a href="javascript:closeStudentDialog()"
-                                   class="easyui-linkbutton" iconCls="icon-cancel">关闭</a>
+       iconCls="icon-ok">保存</a>
+    <a href="javascript:closeStudentDialog()"
+       class="easyui-linkbutton" iconCls="icon-cancel">关闭</a>
 </div>
 </body>
 </html>

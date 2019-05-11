@@ -66,10 +66,10 @@
     <div class="easyui-accordion">
         <div title="学生管理" data-options="iconCls:'icon-item'"
              style="padding:10px;border:none;">
-            <a href="javascript:openTab(' 学生信息管理','student/studentManage.jsp','icon-man')"
+            <a href="javascript:openTab(' 基础信息管理','student/studentManage.jsp','icon-man')"
                class="easyui-linkbutton"
                data-options="plain:true,iconCls:'icon-man'" style="width: 150px;">
-                学生信息管理</a>
+                基础信息管理</a>
             <a href="javascript:openTab(' 学生成绩管理','studentManage.jsp','icon-man')"
                class="easyui-linkbutton"
                data-options="plain:true,iconCls:'icon-man'" style="width: 150px;">

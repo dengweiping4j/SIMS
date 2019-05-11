@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 @Service("studentService")
 public class StudentServiceImpl implements StudentService {
@@ -31,12 +32,13 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public int addStudent(Student student) {
+        student.setPkid(UUID.randomUUID().toString());
         return studentMapper.insert(student);
     }
 
     @Override
-    public int deleteStudent(Integer pkid) {
-        return 0;
+    public int deleteStudent(String pkids) {
+        return studentMapper.deleteByPrimaryKey(pkids);
     }
 
     @Override

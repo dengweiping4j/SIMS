@@ -107,21 +107,14 @@ public class StudentController {
     /**
      * 删除
      *
-     * @param ids
+     * @param pkids
      * @return
      * @throws Exception
      */
-    @RequestMapping(value = "/{ids}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/delete/{pkids}", method = RequestMethod.DELETE)
     @ResponseBody
-    public Result delete(@PathVariable(value = "ids") String ids) throws Exception {
-        if (ids.length() > 20) {
-            return ResultGenerator.genFailResult("ERROR");
-        }
-        String[] idsStr = ids.split(",");
-        for (int i = 0; i < idsStr.length; i++) {
-            studentService.deleteStudent(Integer.valueOf(idsStr[i]));
-        }
-        log.info("request: article/delete , ids: " + ids);
+    public Result delete(@PathVariable(value = "pkids") String pkids) throws Exception {
+        studentService.deleteStudent(pkids);
         return ResultGenerator.genSuccessResult();
     }
 }

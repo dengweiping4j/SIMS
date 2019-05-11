@@ -57,7 +57,7 @@
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from student
-    where pkid = #{pkid,jdbcType=VARCHAR}
+    where pkid in (#{pkid,jdbcType=VARCHAR})
   </delete>
     <insert id="insert" parameterType="com.wq.entity.Student">
     insert into student (pkid, xh, xm, 
