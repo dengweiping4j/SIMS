@@ -2,23 +2,15 @@ package com.wq.controller;
 
 import com.wq.common.Result;
 import com.wq.common.ResultGenerator;
-import com.wq.entity.PageBean;
 import com.wq.entity.Student;
 import com.wq.service.StudentService;
-import com.wq.util.DataGridUtil;
-import com.wq.util.ResponseUtil;
-import com.wq.util.StringUtil;
 import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
-import org.apache.commons.collections.map.HashedMap;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletResponse;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
