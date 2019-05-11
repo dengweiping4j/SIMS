@@ -56,10 +56,82 @@ function deleteStudnet() {
 function openStudentAddDialog() {
     $("#dlg").dialog("open").dialog("setTitle", "添加学生信息", 'refresh', "");
     method = "POST";
-    var year = new Date().getFullYear();
+    //加载下拉框
+    findcombobox();
+}
+
+function saveStudent() {
+    var xm = $("#xm").val();
+    var xh = $("#xh").val();
+    var year = $("#year").combobox("getValue");
+    var departmentKey = $("#departmentKey").combobox("getValue");
+    var majorKey = $("#majorKey").combobox("getValue");
+    var classKey = $("#classKey").combobox("getValue");
+    var phone = $("#phone").val();
+    var data = {
+        "xm": xm,
+        "xh": xh,
+        "year": year,
+        "departmentKey": departmentKey,
+        "majorKey": majorKey,
+        "classKey": classKey,
+        "phone": phone
+    };
+
+    if ($('#fm').form('validate')) {
+        $.ajax({
+            type: method,//方法类型
+            dataType: "json",//服务器返回的数据类型
+            url: url + "/addSave",//url
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify(data),
+            success: function (result) {
+                if (result.resultCode == 200) {
+                    $.messager.alert("系统提示", "保存成功");
+                    $("#dlg").dialog("close");
+                    $("#dg").datagrid("reload");
+                    resetValue();
+                }
+                else {
+                    $.messager.alert("系统提示", "操作失败", "error");
+                    $("#dlg").dialog("close");
+                    resetValue();
+                }
+            },
+            error: function () {
+                $.messager.alert("系统提示", "操作失败", "error");
+            }
+        });
+    } else {
+        $.messager.alert("系统提示", "您有内容尚未填写", "warning");
+    }
+}
+
+function openStudentModifyDialog() {
+    var selectedRows = $("#dg").datagrid('getSelections');
+    if (selectedRows.length != 1) {
+        $.messager.alert("系统提示", "请选择一条要编辑的数据！");
+        return;
+    }
+    var row = selectedRows[0];
+    $("#dlg").dialog("open").dialog("setTitle", "编辑学生信息");
+    $('#fm').form('load', row);
+    //下拉框加载
+    findcombobox();
+    $('#year').combobox('setValue', row.year);
+    $('#departmentKey').combobox('setValue', row.department_key);
+    $('#majorKey').combobox('setValue', row.major_key);
+    $('#classKey').combobox('setValue', row.class_key);
+    method = "POST";
+}
+
+//加载下拉框
+function findcombobox() {
     //入学年份下拉框
+    var year = new Date().getFullYear();
     var yearData = [
-        {'text': year + '年', 'value': year, 'selected': 'year'},
+        {'text': '请选择...', 'value': ''},
+        {'text': year + '年', 'value': year},
         {'text': year - 1 + '年', 'value': year - 1},
         {'text': year - 2 + '年', 'value': year - 2},
         {'text': year - 3 + '年', 'value': year - 3},
@@ -71,12 +143,6 @@ function openStudentAddDialog() {
         panelHeight: 'auto',
         data: yearData
     })
-    //级联下拉框
-    findcombobox();
-}
-
-// 学院-专业-班级 级联下拉框
-function findcombobox() {
     //学院下拉框
     $.ajax({
         async: false,
@@ -149,65 +215,6 @@ function findcombobox() {
         valueField: 'value',
         textField: 'text'
     });
-};
-
-function saveStudent() {
-    var xm = $("#xm").val();
-    var xh = $("#xh").val();
-    var year = $("#year").combobox("getValue");
-    var departmentKey = $("#departmentKey").combobox("getValue");
-    var majorKey = $("#majorKey").combobox("getValue");
-    var classKey = $("#classKey").combobox("getValue");
-    var phone = $("#phone").val();
-    var data = {
-        "xm": xm,
-        "xh": xh,
-        "year": year,
-        "departmentKey": departmentKey,
-        "majorKey": majorKey,
-        "classKey": classKey,
-        "phone": phone
-    };
-
-    if ($('#fm').form('validate')) {
-        $.ajax({
-            type: method,//方法类型
-            dataType: "json",//服务器返回的数据类型
-            url: url + "/addSave",//url
-            contentType: "application/json; charset=utf-8",
-            data: JSON.stringify(data),
-            success: function (result) {
-                if (result.resultCode == 200) {
-                    $.messager.alert("系统提示", "保存成功");
-                    $("#dlg").dialog("close");
-                    $("#dg").datagrid("reload");
-                    resetValue();
-                }
-                else {
-                    $.messager.alert("系统提示", "操作失败", "error");
-                    $("#dlg").dialog("close");
-                    resetValue();
-                }
-            },
-            error: function () {
-                $.messager.alert("系统提示", "操作失败", "error");
-            }
-        });
-    } else {
-        $.messager.alert("系统提示", "您有内容尚未填写", "warning");
-    }
-}
-
-function openStudentModifyDialog() {
-    var selectedRows = $("#dg").datagrid('getSelections');
-    if (selectedRows.length != 1) {
-        $.messager.alert("系统提示", "请选择一条要编辑的数据！");
-        return;
-    }
-    var row = selectedRows[0];
-    $("#dlg").dialog("open").dialog("setTitle", "编辑学生信息");
-    $('#fm').form('load', row);
-    method = "PUT";
 }
 
 function resetValue() {

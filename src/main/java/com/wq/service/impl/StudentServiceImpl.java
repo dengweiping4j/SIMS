@@ -32,7 +32,9 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public int addStudent(Student student) {
-        student.setPkid(UUID.randomUUID().toString());
+        if (student.getPkid() == null || student.getPkid() == "") {
+            student.setPkid(UUID.randomUUID().toString());
+        }
         return studentMapper.insert(student);
     }
 

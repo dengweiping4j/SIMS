@@ -87,24 +87,6 @@ public class StudentController {
     }
 
     /**
-     * 修改学生信息
-     *
-     * @param student
-     * @return
-     * @throws Exception
-     */
-    @RequestMapping(value = "", method = RequestMethod.PUT)
-    @ResponseBody
-    public Result update(@RequestBody Student student) throws Exception {
-        int resultTotal = studentService.updateStudent(student);
-        if (resultTotal > 0) {
-            return ResultGenerator.genSuccessResult();
-        } else {
-            return ResultGenerator.genFailResult("FAIL");
-        }
-    }
-
-    /**
      * 删除
      *
      * @param pkids
