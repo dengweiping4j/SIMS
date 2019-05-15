@@ -1,13 +1,13 @@
-var url = "/student";
+var url = "/SSAM/student";
 var method;
 
-function searchXS() {
+function search() {
     $("#dg").datagrid('load', {
         "xm": $("#s_xm").val()
     });
 }
 
-function deleteStudnet() {
+function del() {
     var selectedRows = $("#dg").datagrid('getSelections');
     console.log(selectedRows);
     if (selectedRows.length == 0) {
@@ -53,14 +53,14 @@ function deleteStudnet() {
 
 }
 
-function openStudentAddDialog() {
+function openAddDialog() {
     $("#dlg").dialog("open").dialog("setTitle", "添加学生信息", 'refresh', "");
     method = "POST";
     //加载下拉框
     findcombobox();
 }
 
-function saveStudent() {
+function save() {
     var xm = $("#xm").val();
     var xh = $("#xh").val();
     var year = $("#year").combobox("getValue");
@@ -107,7 +107,7 @@ function saveStudent() {
     }
 }
 
-function openStudentModifyDialog() {
+function openModifyDialog() {
     var selectedRows = $("#dg").datagrid('getSelections');
     if (selectedRows.length != 1) {
         $.messager.alert("系统提示", "请选择一条要编辑的数据！");
@@ -221,7 +221,7 @@ function resetValue() {
     $('#fm').form('clear');
 }
 
-function closeStudentDialog() {
+function closeDialog() {
     $("#dlg").dialog("close");
     resetValue();
 }

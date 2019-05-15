@@ -1,7 +1,7 @@
 function login() {
-    var userName = $("#userName").val();
+    var userId = $("#userId").val();
     var password = $("#password").val();
-    if (userName == null || userName == "") {
+    if (userId == null || userId == "") {
         alert("用户名不能为空！");
         return;
     }
@@ -12,7 +12,7 @@ function login() {
     $.ajax({
         type: "POST",
         dataType: "json",
-        url: "/users/cookie",
+        url: "users/cookie",
         data: $('#adminlogin').serialize(),
         success: function (result) {
             if (result.resultCode == 200) {

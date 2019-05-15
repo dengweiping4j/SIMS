@@ -30,6 +30,5 @@ function checkCookie() {
 
 function clearCookie() {
     delCookie("userName");
-    delCookie("roleName");
     window.location.href = "login.jsp";
 }

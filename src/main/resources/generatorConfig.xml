@@ -12,7 +12,7 @@
         </commentGenerator>
         <!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/ssm_demo_db?characterEncoding=UTF8&amp;useSSL=false"
+                        connectionURL="jdbc:mysql://localhost:3306/ssam?characterEncoding=UTF8&amp;useSSL=false"
                         userId="root" password="123456"/>
 
         <!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBC DECIMAL 和

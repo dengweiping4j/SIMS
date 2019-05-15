@@ -19,18 +19,6 @@ public interface UserService {
     public User login(User user);
 
     /**
-     * @param map
-     * @return
-     */
-    public List<User> findUser(Map<String, Object> map);
-
-    /**
-     * @param map
-     * @return
-     */
-    public Long getTotalUser(Map<String, Object> map);
-
-    /**
      * @param user
      * @return
      */
@@ -43,8 +31,8 @@ public interface UserService {
     public int addUser(User user);
 
     /**
-     * @param id
+     * @param pkids
      * @return
      */
-    public int deleteUser(Integer id);
+    public int deleteUser(String[] pkids);
 }

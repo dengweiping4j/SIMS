@@ -5,7 +5,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <script type="text/javascript"
-            src="${pageContext.request.contextPath}/views/student/studentManager.js"></script>
+            src="${pageContext.request.contextPath}/views/studentMgr/studentManager.js"></script>
 </head>
 <body style="margin:1px;">
 <table id="dg" title="学生信息管理" class="easyui-datagrid" fitColumns="true"
@@ -31,18 +31,18 @@
 </table>
 <div id="tb">
     <div>
-        <a href="javascript:openStudentAddDialog()" class="easyui-linkbutton"
+        <a href="javascript:openAddDialog()" class="easyui-linkbutton"
            iconCls="icon-add" plain="true">添加</a>
-        <a href="javascript:openStudentModifyDialog()" class="easyui-linkbutton"
+        <a href="javascript:openModifyDialog()" class="easyui-linkbutton"
            iconCls="icon-edit" plain="true">修改</a>
-        <a href="javascript:deleteStudnet()" class="easyui-linkbutton"
+        <a href="javascript:del()" class="easyui-linkbutton"
            iconCls="icon-remove" plain="true">删除</a>
     </div>
     <div>
         &nbsp;学生姓名：&nbsp;
         <input type="text" id="s_xm" size="20" class="easyui-textbox"
-               onkeydown="if(event.keyCode==13) searchXS()"/> <a
-            href="javascript:searchXS()" class="easyui-linkbutton"
+               onkeydown="if(event.keyCode==13) search()"/> <a
+            href="javascript:search()" class="easyui-linkbutton"
             iconCls="icon-search" plain="true">搜索</a>
     </div>
 </div>
@@ -104,9 +104,9 @@
 </div>
 
 <div id="dlg-buttons">
-    <a href="javascript:saveStudent()" class="easyui-linkbutton"
+    <a href="javascript:save()" class="easyui-linkbutton"
        iconCls="icon-ok">保存</a>
-    <a href="javascript:closeStudentDialog()"
+    <a href="javascript:closeDialog()"
        class="easyui-linkbutton" iconCls="icon-cancel">关闭</a>
 </div>
 </body>

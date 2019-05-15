@@ -4,58 +4,48 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wq.mapper.UserMapper">
     <resultMap type="User" id="UserResult">
-        <result property="id" column="id"/>
+        <result property="pkid" column="pkid"/>
         <result property="userName" column="user_name"/>
+        <result property="userId" column="user_id"/>
         <result property="password" column="password"/>
-        <result property="roleName" column="role_name"/>
+        <result property="phone" column="phone"/>
     </resultMap>
 
     <select id="login" parameterType="User" resultMap="UserResult">
-        select id,user_name,password,role_name from
-        ssm_user where user_name=#{userName} and password=#{password} limit 1
-    </select>
-
-    <select id="findUsers" parameterType="Map" resultMap="UserResult">
-        select id,user_name,password,role_name from ssm_user
-        <where>
-            <if test="userName!=null and userName!='' ">
-                and user_name like #{userName}
-            </if>
-        </where>
-        <if test="start!=null and size!=null">
-            limit #{start},#{size}
-        </if>
-    </select>
-
-    <select id="getTotalUser" parameterType="Map" resultType="Long">
-        select count(*) from ssm_user
-        <where>
-            <if test="userName!=null and userName!='' ">
-                and user_name like #{userName}
-            </if>
-        </where>
+        select user_name,password from
+        user where user_id=#{userId} and password=#{password} limit 1
     </select>
 
     <insert id="addUser" parameterType="User">
-        insert into ssm_user(user_name,password)
-        values(#{userName},#{password})
+        insert into user(pkid,user_id,user_name,password,phone)
+        values(#{pkid},#{userId},#{userName},#{password},#{phone})
     </insert>
 
     <update id="updateUser" parameterType="User">
-        update ssm_user
+        update user
         <set>
             <if test="userName!=null and userName!='' ">
                 user_name=#{userName},
             </if>
+            <if test="userId!=null and userId!='' ">
+                user_id=#{userId}
+            </if>
             <if test="password!=null and password!='' ">
                 password=#{password}
             </if>
+            <if test="phone!=null and phone!='' ">
+                phone=#{phone}
+            </if>
         </set>
-        where id=#{id}
+        where pkid=#{pkid}
     </update>
-
-    <delete id="deleteUser" parameterType="Integer">
-        delete from ssm_user
-        where id=#{id}
+    <delete id="deleteByPrimaryKey">
+        delete from user
+        <where>
+            pkid
+            <foreach  collection="array" item="pkid" open="in (" close=")" separator=",">
+                #{pkid}
+            </foreach>
+        </where>
     </delete>
-</mapper> 
+</mapper>

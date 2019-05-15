@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Map;
 
-@Repository("userDao")
+@Repository("userMapper")
 public interface UserMapper {
 
     /**
@@ -16,20 +16,6 @@ public interface UserMapper {
      * @return
      */
     User login(User user);
-
-    /**
-     * 查找用户列表
-     *
-     * @param map
-     * @return
-     */
-    List<User> findUsers(Map<String, Object> map);
-
-    /**
-     * @param map
-     * @return
-     */
-    Long getTotalUser(Map<String, Object> map);
 
     /**
      * 实体修改
@@ -50,8 +36,8 @@ public interface UserMapper {
     /**
      * 删除用户
      *
-     * @param id
+     * @param pkid
      * @return
      */
-    int deleteUser(Integer id);
+    int deleteByPrimaryKey(String[] pkid);
 }

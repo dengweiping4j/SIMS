@@ -1,12 +1,14 @@
 package com.wq.controller;
 
+import com.wq.common.Result;
+import com.wq.common.ResultGenerator;
+import com.wq.entity.User;
 import com.wq.util.DataGridUtil;
+import com.wq.util.MD5Util;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
@@ -40,6 +42,25 @@ public class CommonController {
         map.put("table", table);
         dataGridUtil.selectDataGrid(response, map);
         return null;
+    }
+
+    /*
+    　　* @Description 公共添加方法
+    　　* @param [dataMap]
+    　　* @return com.wq.common.Result
+    　　* @throws
+    　　* @author dengweiping
+    　　* @date 2019/5/15 15:13
+    　　*/
+    @RequestMapping(value = "addSave", method = RequestMethod.POST)
+    @ResponseBody
+    public Result save(@RequestBody Map<String, Object> dataMap) throws Exception {
+        int resultTotal = 0;
+        if (resultTotal > 0) {
+            return ResultGenerator.genSuccessResult();
+        } else {
+            return ResultGenerator.genFailResult("FAIL");
+        }
     }
 
 }
