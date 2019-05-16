@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wq.mapper.DepartmentMapper">
+    <resultMap id="BaseResultMap" type="com.wq.entity.Department">
+        <id column="pkid" jdbcType="VARCHAR" property="pkid"/>
+        <result column="department_name" jdbcType="VARCHAR" property="departmentName"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    pkid, department_name
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from department
+        where pkid = #{pkid,jdbcType=VARCHAR}
+    </select>
+    <insert id="insert" parameterType="com.wq.entity.Department">
+    insert into department (pkid, department_name)
+    values (#{pkid,jdbcType=VARCHAR}, #{departmentName,jdbcType=VARCHAR})
+  </insert>
+    <insert id="insertSelective" parameterType="com.wq.entity.Department">
+        insert into department
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pkid != null">
+                pkid,
+            </if>
+            <if test="departmentName != null">
+                department_name,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="pkid != null">
+                #{pkid,jdbcType=VARCHAR},
+            </if>
+            <if test="departmentName != null">
+                #{departmentName,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.wq.entity.Department">
+        update department
+        <set>
+            <if test="departmentName != null">
+                department_name = #{departmentName,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where pkid = #{pkid,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.wq.entity.Department">
+    update department
+    set department_name = #{departmentName,jdbcType=VARCHAR}
+    where pkid = #{pkid,jdbcType=VARCHAR}
+  </update>
+    <delete id="deleteByPrimaryKey">
+        delete from department
+        <where>
+            pkid
+            <foreach collection="array" item="pkid" open="in (" close=")" separator=",">
+                #{pkid}
+            </foreach>
+        </where>
+    </delete>
+</mapper>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wq.mapper.ClassMapper">
+    <resultMap id="BaseResultMap" type="com.wq.entity.Class">
+        <id column="pkid" jdbcType="VARCHAR" property="pkid"/>
+        <result column="class_name" jdbcType="VARCHAR" property="className"/>
+        <result column="major_key" jdbcType="VARCHAR" property="majorKey"/>
+        <result column="department_key" jdbcType="VARCHAR" property="departmentKey"/>
+        <result column="ClassTutor" jdbcType="VARCHAR" property="classtutor"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    pkid, class_name, major_key, department_key, ClassTutor
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from class
+        where pkid = #{pkid,jdbcType=VARCHAR}
+    </select>
+    <select id="selectClassKeysByMajorKeys" resultType="String">
+        select pkid from class
+        <where>
+            major_key
+            <foreach collection="array" item="majorKey" open="in (" close=")" separator=",">
+                #{majorKey}
+            </foreach>
+        </where>
+    </select>
+    <insert id="insert" parameterType="com.wq.entity.Class">
+    insert into class (pkid, class_name, major_key, 
+      department_key, ClassTutor)
+    values (#{pkid,jdbcType=VARCHAR}, #{className,jdbcType=VARCHAR}, #{majorKey,jdbcType=VARCHAR}, 
+      #{departmentKey,jdbcType=VARCHAR}, #{classtutor,jdbcType=VARCHAR})
+  </insert>
+    <insert id="insertSelective" parameterType="com.wq.entity.Class">
+        insert into class
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pkid != null">
+                pkid,
+            </if>
+            <if test="className != null">
+                class_name,
+            </if>
+            <if test="majorKey != null">
+                major_key,
+            </if>
+            <if test="departmentKey != null">
+                department_key,
+            </if>
+            <if test="classtutor != null">
+                ClassTutor,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="pkid != null">
+                #{pkid,jdbcType=VARCHAR},
+            </if>
+            <if test="className != null">
+                #{className,jdbcType=VARCHAR},
+            </if>
+            <if test="majorKey != null">
+                #{majorKey,jdbcType=VARCHAR},
+            </if>
+            <if test="departmentKey != null">
+                #{departmentKey,jdbcType=VARCHAR},
+            </if>
+            <if test="classtutor != null">
+                #{classtutor,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.wq.entity.Class">
+        update class
+        <set>
+            <if test="className != null">
+                class_name = #{className,jdbcType=VARCHAR},
+            </if>
+            <if test="majorKey != null">
+                major_key = #{majorKey,jdbcType=VARCHAR},
+            </if>
+            <if test="departmentKey != null">
+                department_key = #{departmentKey,jdbcType=VARCHAR},
+            </if>
+            <if test="classtutor != null">
+                ClassTutor = #{classtutor,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where pkid = #{pkid,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.wq.entity.Class">
+    update class
+    set class_name = #{className,jdbcType=VARCHAR},
+      major_key = #{majorKey,jdbcType=VARCHAR},
+      department_key = #{departmentKey,jdbcType=VARCHAR},
+      ClassTutor = #{classtutor,jdbcType=VARCHAR}
+    where pkid = #{pkid,jdbcType=VARCHAR}
+  </update>
+    <delete id="deleteByPrimaryKey">
+        delete from class
+        <where>
+            pkid
+            <foreach collection="array" item="pkid" open="in (" close=")" separator=",">
+                #{pkid}
+            </foreach>
+        </where>
+    </delete>
+</mapper>

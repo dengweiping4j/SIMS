@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wq.mapper.ScoreMapper">
+  <resultMap id="BaseResultMap" type="com.wq.entity.Score">
+    <result column="pkid" jdbcType="VARCHAR" property="pkid" />
+    <result column="student_key" jdbcType="VARCHAR" property="studentKey" />
+    <result column="course_key" jdbcType="VARCHAR" property="courseKey" />
+    <result column="exam_score" jdbcType="VARCHAR" property="examScore" />
+  </resultMap>
+  <insert id="insert" parameterType="com.wq.entity.Score">
+    insert into score (pkid, student_key, course_key, 
+      exam_score)
+    values (#{pkid,jdbcType=VARCHAR}, #{studentKey,jdbcType=VARCHAR}, #{courseKey,jdbcType=VARCHAR}, 
+      #{examScore,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wq.entity.Score">
+    insert into score
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="pkid != null">
+        pkid,
+      </if>
+      <if test="studentKey != null">
+        student_key,
+      </if>
+      <if test="courseKey != null">
+        course_key,
+      </if>
+      <if test="examScore != null">
+        exam_score,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="pkid != null">
+        #{pkid,jdbcType=VARCHAR},
+      </if>
+      <if test="studentKey != null">
+        #{studentKey,jdbcType=VARCHAR},
+      </if>
+      <if test="courseKey != null">
+        #{courseKey,jdbcType=VARCHAR},
+      </if>
+      <if test="examScore != null">
+        #{examScore,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

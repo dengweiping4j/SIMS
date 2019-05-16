@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wq.mapper.TeacherMapper">
+    <resultMap id="BaseResultMap" type="com.wq.entity.Teacher">
+        <result column="pkid" jdbcType="VARCHAR" property="pkid"/>
+        <result column="teacher_name" jdbcType="VARCHAR" property="teacherName"/>
+        <result column="sex" jdbcType="VARCHAR" property="sex"/>
+        <result column="birthday" jdbcType="VARCHAR" property="birthday"/>
+        <result column="phone" jdbcType="VARCHAR" property="phone"/>
+        <result column="teacher_key" jdbcType="VARCHAR" property="teacherKey"/>
+    </resultMap>
+    <insert id="insert" parameterType="com.wq.entity.Teacher">
+        insert into teacher
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pkid != null">
+                pkid,
+            </if>
+            <if test="teacherName != null">
+                teacher_name,
+            </if>
+            <if test="sex != null">
+                sex,
+            </if>
+            <if test="birthday != null">
+                birthday,
+            </if>
+            <if test="phone != null">
+                phone,
+            </if>
+            <if test="teacherKey != null">
+                teacher_key,
+            </if>
+            <if test="personId != null">
+                person_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="pkid != null">
+                #{pkid,jdbcType=VARCHAR},
+            </if>
+            <if test="teacherName != null">
+                #{teacherName,jdbcType=VARCHAR},
+            </if>
+            <if test="sex != null">
+                #{sex,jdbcType=VARCHAR},
+            </if>
+            <if test="birthday != null">
+                #{birthday,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="teacherKey != null">
+                #{teacherKey,jdbcType=VARCHAR},
+            </if>
+            <if test="personId != null">
+                #{personId,jdbcType=LONGVARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="update" parameterType="com.wq.entity.Teacher">
+        update teacher
+        <set>
+            <if test="teacherName != null">
+                teacher_name=#{teacherName},
+            </if>
+            <if test="sex != null">
+                sex=#{sex},
+            </if>
+            <if test="birthday != null">
+                birthday=#{birthday},
+            </if>
+            <if test="phone != null">
+                phone=#{phone},
+            </if>
+            <if test="teacherKey != null">
+                teacher_key=#{teacherKey},
+            </if>
+            <if test="personId != null">
+                person_id=#{personId},
+            </if>
+        </set>
+        where pkid=#{pkid}
+    </update>
+    <delete id="deleteByPrimaryKey">
+        delete from teacher
+        <where>
+            pkid
+            <foreach collection="array" item="pkid" open="in (" close=")" separator=",">
+                #{pkid}
+            </foreach>
+        </where>
+    </delete>
+</mapper>

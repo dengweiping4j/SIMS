@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wq.mapper.MajorMapper">
+    <resultMap id="BaseResultMap" type="com.wq.entity.Major">
+        <id column="pkid" jdbcType="VARCHAR" property="pkid"/>
+        <result column="major_name" jdbcType="VARCHAR" property="majorName"/>
+        <result column="department_key" jdbcType="VARCHAR" property="departmentKey"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    pkid, major_name, department_key
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from major
+        where pkid = #{pkid,jdbcType=VARCHAR}
+    </select>
+    <select id="selectMajorKeysByDepartmentKeys" resultType="String">
+        select pkid from major
+        <where>
+            department_key
+            <foreach collection="array" item="departmentKey" open="in (" close=")" separator=",">
+                #{departmentKey}
+            </foreach>
+        </where>
+    </select>
+    <insert id="insert" parameterType="com.wq.entity.Major">
+    insert into major (pkid, major_name, department_key
+      )
+    values (#{pkid,jdbcType=VARCHAR}, #{majorName,jdbcType=VARCHAR}, #{departmentKey,jdbcType=VARCHAR}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="com.wq.entity.Major">
+        insert into major
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pkid != null">
+                pkid,
+            </if>
+            <if test="majorName != null">
+                major_name,
+            </if>
+            <if test="departmentKey != null">
+                department_key,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="pkid != null">
+                #{pkid,jdbcType=VARCHAR},
+            </if>
+            <if test="majorName != null">
+                #{majorName,jdbcType=VARCHAR},
+            </if>
+            <if test="departmentKey != null">
+                #{departmentKey,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.wq.entity.Major">
+        update major
+        <set>
+            <if test="majorName != null">
+                major_name = #{majorName,jdbcType=VARCHAR},
+            </if>
+            <if test="departmentKey != null">
+                department_key = #{departmentKey,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where pkid = #{pkid,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.wq.entity.Major">
+    update major
+    set major_name = #{majorName,jdbcType=VARCHAR},
+      department_key = #{departmentKey,jdbcType=VARCHAR}
+    where pkid = #{pkid,jdbcType=VARCHAR}
+  </update>
+    <delete id="deleteByPrimaryKey">
+        delete from major
+        <where>
+            pkid
+            <foreach collection="array" item="pkid" open="in (" close=")" separator=",">
+                #{pkid}
+            </foreach>
+        </where>
+    </delete>
+</mapper>

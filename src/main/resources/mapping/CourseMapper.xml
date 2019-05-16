@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wq.mapper.CourseMapper">
+    <resultMap id="BaseResultMap" type="com.wq.entity.Course">
+        <result column="pkid" jdbcType="VARCHAR" property="pkid"/>
+        <result column="course_name" jdbcType="VARCHAR" property="courseName"/>
+        <result column="course_majorkey" jdbcType="VARCHAR" property="courseMajorkey"/>
+        <result column="course_teacherkey" jdbcType="VARCHAR" property="courseTeacherkey"/>
+    </resultMap>
+    <insert id="insert" parameterType="com.wq.entity.Course">
+    insert into course (pkid, course_name, course_majorkey, 
+      course_teacherkey)
+    values (#{pkid,jdbcType=VARCHAR}, #{courseName,jdbcType=VARCHAR}, #{courseMajorkey,jdbcType=VARCHAR}, 
+      #{courseTeacherkey,jdbcType=VARCHAR})
+  </insert>
+    <insert id="insertSelective" parameterType="com.wq.entity.Course">
+        insert into course
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pkid != null">
+                pkid,
+            </if>
+            <if test="courseName != null">
+                course_name,
+            </if>
+            <if test="courseMajorkey != null">
+                course_majorkey,
+            </if>
+            <if test="courseTeacherkey != null">
+                course_teacherkey,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="pkid != null">
+                #{pkid,jdbcType=VARCHAR},
+            </if>
+            <if test="courseName != null">
+                #{courseName,jdbcType=VARCHAR},
+            </if>
+            <if test="courseMajorkey != null">
+                #{courseMajorkey,jdbcType=VARCHAR},
+            </if>
+            <if test="courseTeacherkey != null">
+                #{courseTeacherkey,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+</mapper>
