@@ -12,21 +12,8 @@
         <result column="phone" jdbcType="VARCHAR" property="phone"/>
     </resultMap>
     <sql id="Base_Column_List">
-    pkid, xh, xm, year, class_key, major_key, department_key, phone
+        pkid, xh, xm, year, class_key, major_key, department_key, phone
     </sql>
-    <select id="findStudent" parameterType="Map" resultMap="BaseResultMap">
-        select
-        <include refid="Base_Column_List"/>
-        from student
-        <where>
-            <if test="xm!=null and xm!='' ">
-                and xm like #{xm}
-            </if>
-        </where>
-        <if test="start!=null and size!=null">
-            limit #{start},#{size}
-        </if>
-    </select>
     <select id="getDepartmentList" resultType="java.util.HashMap">
         select t.pkid as value,t.department_name as text
         from department t
@@ -41,24 +28,21 @@
         from class t
         WHERE t.major_key=#{majorKey}
     </select>
-    <select id="getTotalStudent" parameterType="Map" resultType="Long">
-        select count(*) from student
-        <where>
-            <if test="xm!=null and xm!='' ">
-                and xm like #{xm}
-            </if>
-        </where>
-    </select>
     <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
         from student
         where pkid = #{pkid,jdbcType=VARCHAR}
     </select>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-    delete from student
-    where pkid in (#{pkid,jdbcType=VARCHAR})
-  </delete>
+    <delete id="deleteByPrimaryKey">
+        delete from student
+        <where>
+            pkid
+            <foreach collection="array" item="pkid" open="in (" close=")" separator=",">
+                #{pkid}
+            </foreach>
+        </where>
+    </delete>
     <insert id="insert" parameterType="com.wq.entity.Student">
     insert into student (pkid, xh, xm, 
       year, class_key, major_key, 

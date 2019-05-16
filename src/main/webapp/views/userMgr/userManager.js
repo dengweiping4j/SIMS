@@ -1,6 +1,5 @@
 var url = "/SSAM/users";
 var method;
-
 function searchUser() {
     $("#dg").datagrid('load', {
         "userName": $("#s_userName").val()

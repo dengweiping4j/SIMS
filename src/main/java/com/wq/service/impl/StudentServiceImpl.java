@@ -16,18 +16,8 @@ public class StudentServiceImpl implements StudentService {
     private StudentMapper studentMapper;
 
     @Override
-    public List<Student> findStudent(Map<String, Object> map) {
-        return studentMapper.findStudent(map);
-    }
-
-    @Override
-    public Long getTotalStudent(Map<String, Object> map) {
-        return studentMapper.getTotalStudent(map);
-    }
-
-    @Override
     public int updateStudent(Student student) {
-        return 0;
+        return studentMapper.updateByPrimaryKeySelective(student);
     }
 
     @Override
@@ -39,7 +29,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public int deleteStudent(String pkids) {
+    public int deleteStudent(String[] pkids) {
         return studentMapper.deleteByPrimaryKey(pkids);
     }
 

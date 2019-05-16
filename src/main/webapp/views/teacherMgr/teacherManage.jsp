@@ -5,27 +5,24 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <script type="text/javascript"
-            src="${pageContext.request.contextPath}/views/studentMgr/studentManager.js"></script>
+            src="${pageContext.request.contextPath}/views/teacherMgr/teacherManager.js"></script>
 </head>
 <body style="margin:1px;">
-<table id="dg" title="学生信息管理" class="easyui-datagrid" fitColumns="true"
+<table id="dg" title="教师信息管理" class="easyui-datagrid" fitColumns="true"
        pagination="true" rownumbers="true"
-       url="${pageContext.request.contextPath}/common/dataGrid?table=v_student" fit="true"
+       url="${pageContext.request.contextPath}/common/dataGrid?table=v_teacher" fit="true"
        toolbar="#tb">
     <thead>
     <tr>
         <th field="cb" checkbox="true" align="center"></th>
-        <th field="xm" width="50" align="center">学生姓名</th>
-        <th field="xh" width="50" align="center">学号</th>
-        <th field="year" width="50" align="center">年级</th>
-        <th field="department_name" width="80" align="center">学院</th>
-        <th field="major_name" width="80" align="center">专业</th>
-        <th field="class_name" width="80" align="center">班级</th>
-        <th field="phone" width="60" align="center">联系电话</th>
+        <th field="teacherName" width="50" align="center">教师姓名</th>
+        <th field="teacherKey" width="50" align="center">教工号</th>
+        <th field="sexmc" width="50" align="center">性别</th>
+        <th field="birthday" width="50" align="center">出生日期</th>
+        <th field="personId" width="80" align="center">身份证号</th>
+        <th field="phone" width="80" align="center">联系电话</th>
         <th field="pkid" hidden="true"/>
-        <th field="department_key" hidden="true"/>
-        <th field="major_key" hidden="true"/>
-        <th field="class_key" hidden="true"/>
+        <th field="sex" hidden="true"/>
     </tr>
     </thead>
 </table>
@@ -39,7 +36,7 @@
            iconCls="icon-remove" plain="true">删除</a>
     </div>
     <div>
-        &nbsp;学生姓名：&nbsp;
+        &nbsp;教师姓名：&nbsp;
         <input type="text" id="s_xm" size="20" class="easyui-textbox"
                onkeydown="if(event.keyCode==13) search()"/> <a
             href="javascript:search()" class="easyui-linkbutton"
@@ -48,56 +45,48 @@
 </div>
 
 <div id="dlg" class="easyui-dialog" data-options="modal:true"
-     style="width: 520px;height:450px;padding: 10px 20px" closed="true"
+     style="width: 500px;height:420px;padding: 10px 20px" closed="true"
      buttons="#dlg-buttons">
     <form id="fm" method="post">
         <input type="hidden" id="pkid" name="pkid">
         <table cellspacing="8px">
             <tr>
-                <td>学生姓名：</td>
-                <td><input type="text" id="xm" name="xm"
+                <td>教师姓名：</td>
+                <td><input type="text" id="teacherName" name="teacherName"
                            class="easyui-textbox" required="true"/>&nbsp;
                     <font color="red">*</font>
                 </td>
             </tr>
             <tr>
-                <td>学号：</td>
-                <td><input type="text" id="xh" name="xh"
+                <td>教工号：</td>
+                <td><input type="text" id="teacherKey" name="teacherKey"
                            class="easyui-textbox" required="true"/>&nbsp;
                     <font color="red">*</font>
                 </td>
             </tr>
             <tr>
-                <td>入学年份：</td>
-                <td><input type="text" id="year" name="year"
-                           class="easyui-combobox" required="true"/>&nbsp;
-                    <font color="red">*</font>
+                <td>性别：</td>
+                <td><input type="radio" id="sex" name="sex"
+                           value="1"/>男
+                    <input type="radio" id="sex" name="sex"
+                           value="2"/>女
                 </td>
             </tr>
             <tr>
-                <td>学院：</td>
-                <td><input type="text" id="departmentKey" name="departmentKey"
-                           class="easyui-combobox" required="true"/>&nbsp;
-                    <font color="red">*</font>
+                <td>出生日期：</td>
+                <td><input type="text" id="birthday" name="birthday"
+                           class="easyui-datebox"/>
                 </td>
             </tr>
             <tr>
-                <td>专业：</td>
-                <td><input type="text" id="majorKey" name="majorKey"
-                           class="easyui-combobox" required="true"/>&nbsp;
-                    <font color="red">*</font>
-                </td>
-            </tr>
-            <tr>
-                <td>班级：</td>
-                <td><input type="text" id="classKey" name="classKey"
-                           class="easyui-combobox" required="true"/>&nbsp;
-                    <font color="red">*</font>
+                <td>身份证号：</td>
+                <td><input type="text" id="personId" name="personId"
+                           class="easyui-textbox" style="width: 200px"/>
                 </td>
             </tr>
             <tr>
                 <td>联系电话：</td>
-                <td><input type="text" id="phone" name="phone" class="easyui-textbox"/>
+                <td><input type="text" id="phone" name="phone" class="easyui-textbox" style="width: 200px"/>
                 </td>
             </tr>
         </table>

@@ -41,7 +41,7 @@
 
 <div id="addDlg" class="easyui-dialog"
      style="width: 420px;height:350px;padding: 10px 20px" closed="true"
-     buttons="#add-buttons">
+     buttons="#add-buttons" data-options="modal:true">
     <form id="addForm" method="post">
         <table cellspacing="8px">
             <tr>

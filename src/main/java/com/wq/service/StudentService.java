@@ -8,21 +8,9 @@ import java.util.Map;
 public interface StudentService {
 
     /**
-     * @param map
-     * @return
-     */
-    List<Student> findStudent(Map<String, Object> map);
-
-    /**
      * 获取学院列表
      */
     List<Map<String, Object>> getDepartmentList();
-
-    /**
-     * @param map
-     * @return
-     */
-    Long getTotalStudent(Map<String, Object> map);
 
     /**
      * @param student
@@ -44,7 +32,7 @@ public interface StudentService {
     　　* @author dengweiping
     　　* @date 2019/5/11 16:18
     　　*/
-    int deleteStudent(String pkids);
+    int deleteStudent(String[] pkids);
 
     List<Map<String, Object>> getMajorList(String departmentKey);
 

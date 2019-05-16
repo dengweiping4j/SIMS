@@ -87,6 +87,24 @@ public class StudentController {
     }
 
     /**
+     * 修改学生信息
+     *
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value = "updateSave", method = RequestMethod.POST)
+    @ResponseBody
+    public Result updateSave(@RequestBody Student student) throws Exception {
+        int resultTotal;
+        resultTotal = studentService.updateStudent(student);
+        if (resultTotal > 0) {
+            return ResultGenerator.genSuccessResult();
+        } else {
+            return ResultGenerator.genFailResult("FAIL");
+        }
+    }
+
+    /**
      * 删除
      *
      * @param pkids
@@ -96,7 +114,8 @@ public class StudentController {
     @RequestMapping(value = "/delete/{pkids}", method = RequestMethod.DELETE)
     @ResponseBody
     public Result delete(@PathVariable(value = "pkids") String pkids) throws Exception {
-        studentService.deleteStudent(pkids);
+        String[] pkidArr = pkids.split(",");
+        studentService.deleteStudent(pkidArr);
         return ResultGenerator.genSuccessResult();
     }
 }
