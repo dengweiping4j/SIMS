@@ -21,3 +21,6 @@
 ###my own###
 logs
 target
+pom.xml
+jdbc-druid-config.properties
+generatorConfig.xml
