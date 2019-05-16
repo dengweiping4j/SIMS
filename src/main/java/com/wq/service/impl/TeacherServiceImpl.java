@@ -6,6 +6,8 @@ import com.wq.service.TeacherService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -30,5 +32,10 @@ public class TeacherServiceImpl implements TeacherService {
     @Override
     public int delete(String[] pkids) {
         return teacherMapper.deleteByPrimaryKey(pkids);
+    }
+
+    @Override
+    public List<Map<String, Object>> getTeacherList() {
+        return teacherMapper.getTeacherList();
     }
 }

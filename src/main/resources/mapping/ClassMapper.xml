@@ -6,7 +6,7 @@
         <result column="class_name" jdbcType="VARCHAR" property="className"/>
         <result column="major_key" jdbcType="VARCHAR" property="majorKey"/>
         <result column="department_key" jdbcType="VARCHAR" property="departmentKey"/>
-        <result column="ClassTutor" jdbcType="VARCHAR" property="classtutor"/>
+        <result column="class_tutor" jdbcType="VARCHAR" property="classTutor"/>
     </resultMap>
     <sql id="Base_Column_List">
     pkid, class_name, major_key, department_key, ClassTutor
@@ -28,9 +28,9 @@
     </select>
     <insert id="insert" parameterType="com.wq.entity.Class">
     insert into class (pkid, class_name, major_key, 
-      department_key, ClassTutor)
+      department_key, class_tutor)
     values (#{pkid,jdbcType=VARCHAR}, #{className,jdbcType=VARCHAR}, #{majorKey,jdbcType=VARCHAR}, 
-      #{departmentKey,jdbcType=VARCHAR}, #{classtutor,jdbcType=VARCHAR})
+      #{departmentKey,jdbcType=VARCHAR}, #{classTutor,jdbcType=VARCHAR})
   </insert>
     <insert id="insertSelective" parameterType="com.wq.entity.Class">
         insert into class
@@ -47,8 +47,8 @@
             <if test="departmentKey != null">
                 department_key,
             </if>
-            <if test="classtutor != null">
-                ClassTutor,
+            <if test="class_tutor != null">
+                class_tutor,
             </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -64,8 +64,8 @@
             <if test="departmentKey != null">
                 #{departmentKey,jdbcType=VARCHAR},
             </if>
-            <if test="classtutor != null">
-                #{classtutor,jdbcType=VARCHAR},
+            <if test="classTutor != null">
+                #{classTutor,jdbcType=VARCHAR},
             </if>
         </trim>
     </insert>
@@ -81,8 +81,8 @@
             <if test="departmentKey != null">
                 department_key = #{departmentKey,jdbcType=VARCHAR},
             </if>
-            <if test="classtutor != null">
-                ClassTutor = #{classtutor,jdbcType=VARCHAR},
+            <if test="classTutor != null">
+                class_tutor = #{classTutor,jdbcType=VARCHAR},
             </if>
         </set>
         where pkid = #{pkid,jdbcType=VARCHAR}
@@ -92,7 +92,7 @@
     set class_name = #{className,jdbcType=VARCHAR},
       major_key = #{majorKey,jdbcType=VARCHAR},
       department_key = #{departmentKey,jdbcType=VARCHAR},
-      ClassTutor = #{classtutor,jdbcType=VARCHAR}
+      class_tutor = #{classTutor,jdbcType=VARCHAR}
     where pkid = #{pkid,jdbcType=VARCHAR}
   </update>
     <delete id="deleteByPrimaryKey">

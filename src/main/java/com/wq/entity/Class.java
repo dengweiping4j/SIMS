@@ -9,7 +9,7 @@ public class Class {
 
     private String departmentKey;
 
-    private String classtutor;
+    private String classTutor;
 
     public String getPkid() {
         return pkid;
@@ -43,11 +43,11 @@ public class Class {
         this.departmentKey = departmentKey == null ? null : departmentKey.trim();
     }
 
-    public String getClasstutor() {
-        return classtutor;
+    public String getClassTutor() {
+        return classTutor;
     }
 
-    public void setClasstutor(String classtutor) {
-        this.classtutor = classtutor == null ? null : classtutor.trim();
+    public void setClassTutor(String classTutor) {
+        this.classTutor = classTutor;
     }
 }

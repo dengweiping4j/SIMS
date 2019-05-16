@@ -5,15 +5,13 @@ import com.wq.common.ResultGenerator;
 import com.wq.entity.Class;
 import com.wq.entity.Department;
 import com.wq.entity.Major;
-import com.wq.entity.Teacher;
 import com.wq.service.BaseDataService;
-import com.wq.service.TeacherService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
-/**
+/**Ø
  * 教师信息管理Controller类
  */
 @Controller

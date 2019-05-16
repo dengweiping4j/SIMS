@@ -76,4 +76,19 @@ public class TeacherController {
         teacherService.delete(pkidArr);
         return ResultGenerator.genSuccessResult();
     }
+
+    /**
+     * 获取老师列表Controller
+     */
+    @RequestMapping(value = "/getTeacherList", method = RequestMethod.POST)
+    @ResponseBody
+    public JSONArray getTeacherList() {
+        List<Map<String, Object>> list = teacherService.getTeacherList();
+        if (list.size() > 0) {
+            JSONArray jsonArray = JSONArray.fromObject(list);
+            return jsonArray;
+        }
+        return null;
+    }
+
 }

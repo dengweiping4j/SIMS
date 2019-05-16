@@ -18,6 +18,7 @@
         <th field="className" width="50" align="center">班级名称</th>
         <th field="departmentName" width="60" align="center">所属学院</th>
         <th field="majorName" width="50" align="center">所属专业</th>
+        <th field="classtTutor" width="50" align="center">班主任</th>
         <th field="pkid" hidden="true"/>
         <th field="majorKey" hidden="true"/>
         <th field="departmentKey" hidden="true"/>
@@ -65,6 +66,13 @@
             <tr>
                 <td>所属专业：</td>
                 <td><input type="text" id="majorKey" name="majorKey"
+                           class="easyui-combobox" style="width: 200px" required="true"/>&nbsp;
+                    <font color="red">*</font>
+                </td>
+            </tr>
+            <tr>
+                <td>班主任：</td>
+                <td><input type="text" id="classtTutor" name="classtTutor"
                            class="easyui-combobox" style="width: 200px" required="true"/>&nbsp;
                     <font color="red">*</font>
                 </td>
