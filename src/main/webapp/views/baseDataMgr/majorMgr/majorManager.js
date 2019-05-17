@@ -1,4 +1,4 @@
-var url = "/SSAM/baseData";
+var url = "/SIMS/baseData";
 var method;
 var methodName;
 
@@ -118,7 +118,7 @@ function findCombobox() {
     $.ajax({
         async: false,
         type: "POST",
-        url: "/SSAM/student/getDepartmentList",//请求后台数据
+        url: "/SIMS/student/getDepartmentList",//请求后台数据
         dataType: "json",
         success: function (departmentList) {
             $("#departmentKey").combobox({//往下拉框赋值

@@ -6,9 +6,9 @@
         version="3.0"
         metadata-complete="true">
 
-  <display-name>SSAM</display-name>
+  <display-name>SIMS</display-name>
   <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
+    <welcome-file>login.jsp</welcome-file>
   </welcome-file-list>
   <context-param>
     <param-name>contextConfigLocation</param-name>

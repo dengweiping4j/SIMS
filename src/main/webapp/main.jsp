@@ -7,7 +7,6 @@
     <title>学生信息管理系统主页</title>
     <script type="text/javascript">
         checkCookie();
-
         $(function () {
             $("#userName").html(getCookie('userName'));
         });
@@ -47,7 +46,7 @@
         <tr>
             <td style="font-size: 20px;color:#ffffff;font-family: '微软雅黑';"
                 align="left" width="50%">
-                <img src="images/hbmdlogo.jpg" width="60"><font size="5">&nbsp;&nbsp;<strong>学生信息管理系统</strong></font>
+                <img src="images/WQStudio.png" width="60"><font size="5">&nbsp;&nbsp;<strong>学生信息管理系统</strong></font>
             </td>
             <td
                     style="font-size: 20px;color:#ffffff;font-family: '楷体';"

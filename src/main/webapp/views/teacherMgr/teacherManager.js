@@ -1,4 +1,4 @@
-var url = "/SSAM/teacher";
+var url = "/SIMS/teacher";
 var method;
 var methodName;
 

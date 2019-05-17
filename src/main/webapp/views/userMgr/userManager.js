@@ -1,4 +1,4 @@
-var url = "/SSAM/users";
+var url = "/SIMS/users";
 var method;
 function searchUser() {
     $("#dg").datagrid('load', {

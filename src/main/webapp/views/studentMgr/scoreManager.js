@@ -1,4 +1,4 @@
-var url = "/SSAM/student";
+var url = "/SIMS/student";
 var method;
 var methodName;
 
@@ -126,7 +126,7 @@ function findcombobox() {
     $.ajax({
         async: false,
         type: "post",
-        url: "/SSAM/student/getDepartmentList",//请求后台数据
+        url: "/SIMS/student/getDepartmentList",//请求后台数据
         dataType: "json",
         success: function (departmentList) {
             $("#departmentKey").combobox({//往下拉框赋值
@@ -147,7 +147,7 @@ function findcombobox() {
             $("#majorKey").combobox("loadData", "");
             $.ajax({
                 async: false,
-                url: "/SSAM/student/getMajorList",
+                url: "/SIMS/student/getMajorList",
                 data: {departmentKey: departmentKey},
                 type: "POST",
                 dataType: "json",
@@ -175,7 +175,7 @@ function findcombobox() {
             $("#classKey").combobox("loadData", "");
             $.ajax({
                 async: false,
-                url: "/SSAM/student/getClassList",
+                url: "/SIMS/student/getClassList",
                 cache: false,
                 data: {majorKey: majorKey},
                 type: "POST",
@@ -203,7 +203,7 @@ function findcombobox() {
             $("#courseKey").combobox("loadData", "");
             $.ajax({
                 async: false,
-                url: "/SSAM/course/getCourseList",
+                url: "/SIMS/course/getCourseList",
                 cache: false,
                 data: {classKey: classKey},
                 type: "POST",
@@ -215,7 +215,7 @@ function findcombobox() {
             $("#studentKey").combobox("loadData", "");
             $.ajax({
                 async: false,
-                url: "/SSAM/student/getStudentList",
+                url: "/SIMS/student/getStudentList",
                 cache: false,
                 data: {classKey: classKey},
                 type: "POST",

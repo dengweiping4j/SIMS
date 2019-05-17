@@ -1,4 +1,4 @@
-var url = "/SSAM/baseData";
+var url = "/SIMS/baseData";
 var method;
 var methodName;
 
@@ -125,7 +125,7 @@ function findcombobox() {
     $.ajax({
         async: false,
         type: "post",
-        url: "/SSAM/teacher/getTeacherList",//请求后台数据
+        url: "/SIMS/teacher/getTeacherList",//请求后台数据
         dataType: "json",
         success: function (teacherList) {
             $("#classTutor").combobox({//往下拉框赋值
@@ -140,7 +140,7 @@ function findcombobox() {
     $.ajax({
         async: false,
         type: "post",
-        url: "/SSAM/student/getDepartmentList",//请求后台数据
+        url: "/SIMS/student/getDepartmentList",//请求后台数据
         dataType: "json",
         success: function (departmentList) {
             $("#departmentKey").combobox({//往下拉框赋值
@@ -161,7 +161,7 @@ function findcombobox() {
             $("#majorKey").combobox("loadData", "");
             $.ajax({
                 async: false,
-                url: "/SSAM/student/getMajorList",
+                url: "/SIMS/student/getMajorList",
                 data: {departmentKey: departmentKey},
                 type: "POST",
                 dataType: "json",

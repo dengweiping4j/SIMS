@@ -25,10 +25,10 @@
     <div>
         <br/><br/><br/>
         <div>
-            <h1 class="logo-name"><img src="images/logo.png" width="200px"/></h1>
+            <h1 class="logo-name"><img src="images/WQStudio.jpg" width="200px"/></h1>
         </div>
         <h3>欢迎使用 学生信息管理系统</h3>
-        <h4>（Precision poverty alleviation）</h4><br/>
+        <h4>Student Information Management System</h4><br/>
 
         <form class="m-t" role="form" id="adminlogin" method="post"
               name="adminlogin" onsubmit="return false" action="##">

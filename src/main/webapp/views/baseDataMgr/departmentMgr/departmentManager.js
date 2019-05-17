@@ -1,4 +1,4 @@
-var url = "/SSAM/baseData";
+var url = "/SIMS/baseData";
 var method;
 var methodName;
 
