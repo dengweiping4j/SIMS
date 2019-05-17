@@ -5,8 +5,21 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>学生管理系统主页</title>
+    <%--easyui主题皮肤--%>
+    <%--<link rel="stylesheet" type="text/css"--%>
+          <%--href="${pageContext.request.contextPath}/jquery-easyui-1.5.1/themes/default/easyui.css">--%>
     <link rel="stylesheet" type="text/css"
           href="${pageContext.request.contextPath}/jquery-easyui-1.5.1/themes/ui-cupertino/easyui.css">
+    <%--<link rel="stylesheet" type="text/css"--%>
+          <%--href="${pageContext.request.contextPath}/jquery-easyui-1.5.1/themes/ui-dark-hive/easyui.css">--%>
+    <%--<link rel="stylesheet" type="text/css"--%>
+          <%--href="${pageContext.request.contextPath}/jquery-easyui-1.5.1/themes/ui-pepper-grinder/easyui.css">--%>
+    <%--<link rel="stylesheet" type="text/css"--%>
+          <%--href="${pageContext.request.contextPath}/jquery-easyui-1.5.1/themes/ui-sunny/easyui.css">--%>
+
+
+
+
     <link rel="stylesheet" type="text/css"
           href="${pageContext.request.contextPath}/jquery-easyui-1.5.1/themes/icon.css">
     <link rel="icon" href="${pageContext.request.contextPath}/images/my.ico" type="image/x-icon"/>

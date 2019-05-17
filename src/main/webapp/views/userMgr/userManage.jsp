@@ -10,6 +10,10 @@
 <body style="margin:1px;">
 <table id="dg" title="用户管理" class="easyui-datagrid" fitColumns="true"
        pagination="true" rownumbers="true"
+       data-options="
+           fitColumns:true,
+           scrollbarSize:1,
+           striped:true"
        url="${pageContext.request.contextPath}/common/dataGrid?table=user" fit="true"
        toolbar="#tb">
     <thead>

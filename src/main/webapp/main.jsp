@@ -8,6 +8,10 @@
     <script type="text/javascript">
         checkCookie();
 
+        $(function () {
+            $("#userName").html(getCookie('userName'));
+        });
+
         function addTab(url, text, iconCls) {
             var content = "<iframe frameborder=0 scrolling='auto' style='width:100%;height:100%' src='${pageContext.request.contextPath}/views/"
                 + url + "'></iframe>";
@@ -47,8 +51,9 @@
             </td>
             <td
                     style="font-size: 20px;color:#ffffff;font-family: '楷体';"
-                    align="right" width="50%"><font size="3">&nbsp;&nbsp;<strong>当前用户：</strong>
-                admin</font>【管理员】
+                    align="right" width="50%">
+                <img src="images/title.png" width="60">
+                <span id="userName"><font size="2">超级管理员</font><br><br></span>
             </td>
         </tr>
     </table>
@@ -67,47 +72,47 @@
     <div class="easyui-accordion">
         <div title="学生管理" data-options="iconCls:'icon-item'"
              style="padding:10px;border:none;">
-            <a href="javascript:openTab(' 学生信息','studentMgr/studentManage.jsp')"
+            <a href="javascript:openTab(' 学生信息','studentMgr/studentManage.jsp','fa fa-address-book')"
                class="easyui-linkbutton"
                data-options="plain:true,iconCls:'fa fa-address-book'" style="width: 150px;">
                 学生信息</a>
-            <a href="javascript:openTab(' 成绩管理','studentMgr/scoreManage.jsp')"
+            <a href="javascript:openTab(' 成绩管理','studentMgr/scoreManage.jsp','fa fa-bar-chart-o')"
                class="easyui-linkbutton"
                data-options="plain:true,iconCls:'fa fa-bar-chart-o'" style="width: 150px;">
                 成绩管理</a>
         </div>
         <div title="教师管理" data-options="iconCls:'icon-item'"
              style="padding:10px;border:none;">
-            <a href="javascript:openTab(' 教师信息','teacherMgr/teacherManage.jsp')"
+            <a href="javascript:openTab(' 教师信息','teacherMgr/teacherManage.jsp','fa fa-address-book')"
                class="easyui-linkbutton"
                data-options="plain:true,iconCls:'fa fa-address-book'" style="width: 150px;">
                 教师信息</a>
         </div>
         <div title="课程管理" data-options="iconCls:'icon-item'"
              style="padding:10px;border:none;">
-            <a href="javascript:openTab(' 课程信息','courseMgr/courseManage.jsp')"
+            <a href="javascript:openTab(' 课程信息','courseMgr/courseManage.jsp','fa fa-calendar-o')"
                class="easyui-linkbutton"
                data-options="plain:true,iconCls:'fa fa-calendar-o'" style="width: 150px;">
                 课程信息</a>
         </div>
         <div title="基础数据管理" data-options="iconCls:'icon-item'"
              style="padding:10px;border:none;">
-            <a href="javascript:openTab(' 学院信息','baseDataMgr/departmentMgr/departmentManage.jsp')"
+            <a href="javascript:openTab(' 学院信息','baseDataMgr/departmentMgr/departmentManage.jsp','fa fa-sitemap')"
                class="easyui-linkbutton"
                data-options="plain:true,iconCls:'fa fa-sitemap'" style="width: 150px;">
                 学院信息</a>
-            <a href="javascript:openTab(' 专业信息','baseDataMgr/majorMgr/majorManage.jsp')"
+            <a href="javascript:openTab(' 专业信息','baseDataMgr/majorMgr/majorManage.jsp','fa fa-balance-scale')"
                class="easyui-linkbutton"
                data-options="plain:true,iconCls:'fa fa-balance-scale'" style="width: 150px;">
                 专业信息</a>
-            <a href="javascript:openTab(' 班级信息','baseDataMgr/classMgr/classManage.jsp')"
+            <a href="javascript:openTab(' 班级信息','baseDataMgr/classMgr/classManage.jsp','fa fa-users')"
                class="easyui-linkbutton"
                data-options="plain:true,iconCls:'fa fa-users'" style="width: 150px;">
                 班级信息</a>
         </div>
         <div title="系统管理" data-options="iconCls:'icon-item'"
              style="padding:10px;border:none;">
-            <a href="javascript:openTab(' 用户管理','userMgr/userManage.jsp','icon-man')"
+            <a href="javascript:openTab(' 用户管理','userMgr/userManage.jsp','fa fa-user-o')"
                class="easyui-linkbutton"
                data-options="plain:true,iconCls:'fa fa-user-o'" style="width: 150px;">
                 用户管理</a>

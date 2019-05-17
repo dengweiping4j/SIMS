@@ -10,6 +10,10 @@
 <body style="margin:1px;">
 <table id="dg" title="学生信息管理" class="easyui-datagrid" fitColumns="true"
        pagination="true" rownumbers="true"
+       data-options="
+           fitColumns:true,
+           scrollbarSize:1,
+           striped:true"
        url="${pageContext.request.contextPath}/common/dataGrid?table=v_student" fit="true"
        toolbar="#tb">
     <thead>
@@ -77,27 +81,27 @@
             <tr>
                 <td>学院：</td>
                 <td><input type="text" id="departmentKey" name="departmentKey"
-                           class="easyui-combobox" required="true"/>&nbsp;
+                           class="easyui-combobox" required="true" style="width: 200px"/>&nbsp;
                     <font color="red">*</font>
                 </td>
             </tr>
             <tr>
                 <td>专业：</td>
                 <td><input type="text" id="majorKey" name="majorKey"
-                           class="easyui-combobox" required="true"/>&nbsp;
+                           class="easyui-combobox" required="true" style="width: 200px"/>&nbsp;
                     <font color="red">*</font>
                 </td>
             </tr>
             <tr>
                 <td>班级：</td>
                 <td><input type="text" id="classKey" name="classKey"
-                           class="easyui-combobox" required="true"/>&nbsp;
+                           class="easyui-combobox" required="true" style="width: 200px"/>&nbsp;
                     <font color="red">*</font>
                 </td>
             </tr>
             <tr>
                 <td>联系电话：</td>
-                <td><input type="text" id="phone" name="phone" class="easyui-textbox"/>
+                <td><input type="text" id="phone" name="phone" class="easyui-textbox" style="width: 200px"/>
                 </td>
             </tr>
         </table>
@@ -106,9 +110,9 @@
 
 <div id="dlg-buttons">
     <a href="javascript:save()" class="easyui-linkbutton"
-       iconCls="icon-ok">保存</a>
+       iconCls="fa fa-save">保存</a>
     <a href="javascript:closeDialog()"
-       class="easyui-linkbutton" iconCls="icon-cancel">关闭</a>
+       class="easyui-linkbutton" iconCls="fa fa-close">关闭</a>
 </div>
 </body>
 </html>
