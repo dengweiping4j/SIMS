@@ -28,6 +28,11 @@
         from class t
         WHERE t.major_key=#{majorKey}
     </select>
+    <select id="getStudentList" parameterType="String" resultType="java.util.HashMap">
+        select t.pkid as value,t.xm as text
+        from student t
+        WHERE t.class_key=#{classKey}
+    </select>
     <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>

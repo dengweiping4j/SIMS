@@ -122,7 +122,7 @@ function findCombobox() {
         dataType: "json",
         success: function (departmentList) {
             $("#departmentKey").combobox({//往下拉框赋值
-                prompt: '请选择',
+                prompt: '请选择...',
                 data: departmentList,
                 valueField: "value",//value值
                 textField: "text",//文本值

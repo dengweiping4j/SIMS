@@ -122,9 +122,9 @@ function openModifyDialog() {
     findcombobox();
     $('#fm').form('load', row);
     $('#year').combobox('setValue', row.year);
-    $('#departmentKey').combobox('setValue', row.department_key);
-    $('#majorKey').combobox('setValue', row.major_key);
-    $('#classKey').combobox('setValue', row.class_key);
+    $('#departmentKey').combobox('setValue', row.departmentKey);
+    $('#majorKey').combobox('setValue', row.majorKey);
+    $('#classKey').combobox('setValue', row.classKey);
     method = "POST";
     methodName = "/updateSave";
 }
@@ -141,7 +141,7 @@ function findcombobox() {
         {'text': year - 4 + '年', 'value': year - 4}
     ];
     $('#year').combobox({
-        prompt: '请选择',
+        prompt: '请选择...',
         textField: 'text',
         valueField: 'value',
         panelHeight: 'auto',
@@ -155,7 +155,7 @@ function findcombobox() {
         dataType: "json",
         success: function (departmentList) {
             $("#departmentKey").combobox({//往下拉框赋值
-                prompt: '请选择',
+                prompt: '请选择...',
                 data: departmentList,
                 valueField: "value",//value值
                 textField: "text",//文本值
@@ -185,7 +185,7 @@ function findcombobox() {
 
     });
     $('#majorKey').combobox({
-        prompt: '请选择',
+        prompt: '请选择...',
         editable: false, //不可编辑状态    
         cache: false,
         panelHeight: 'auto',//自动高度适合    
@@ -212,7 +212,7 @@ function findcombobox() {
         }
     });
     $('#classKey').combobox({
-        prompt: '请选择',
+        prompt: '请选择...',
         editable: false, //不可编辑状态    
         cache: false,
         panelHeight: 'auto',//自动高度适合    

@@ -6,7 +6,6 @@ import com.wq.entity.Major;
 import com.wq.entity.Teacher;
 import org.springframework.stereotype.Service;
 
-@Service("teacherService")
 public interface BaseDataService {
 
     int updateDepartment(Department department);

@@ -2,7 +2,9 @@ package com.wq.controller;
 
 import com.wq.common.Result;
 import com.wq.common.ResultGenerator;
+import com.wq.entity.Score;
 import com.wq.entity.Student;
+import com.wq.service.ScoreService;
 import com.wq.service.StudentService;
 import net.sf.json.JSONArray;
 import org.apache.log4j.Logger;
@@ -23,6 +25,8 @@ public class StudentController {
 
     @Resource
     private StudentService studentService;
+    @Resource
+    private ScoreService scoreService;
     @Autowired
     private static final Logger log = Logger.getLogger(StudentController.class);// 日志文件
 
@@ -61,6 +65,20 @@ public class StudentController {
     @ResponseBody
     public JSONArray getClassList(String majorKey) {
         List<Map<String, Object>> list = studentService.getClassList(majorKey);
+        if (list.size() > 0) {
+            JSONArray jsonArray = JSONArray.fromObject(list);
+            return jsonArray;
+        }
+        return null;
+    }
+
+    /**
+     * 获取学生列表Controller
+     */
+    @RequestMapping(value = "/getStudentList", method = RequestMethod.POST)
+    @ResponseBody
+    public JSONArray getStudentList(String classKey) {
+        List<Map<String, Object>> list = studentService.getStudentList(classKey);
         if (list.size() > 0) {
             JSONArray jsonArray = JSONArray.fromObject(list);
             return jsonArray;
@@ -116,6 +134,57 @@ public class StudentController {
     public Result delete(@PathVariable(value = "pkids") String pkids) throws Exception {
         String[] pkidArr = pkids.split(",");
         studentService.deleteStudent(pkidArr);
+        return ResultGenerator.genSuccessResult();
+    }
+
+    /**
+     * 添加学生成绩
+     *
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value = "addScore", method = RequestMethod.POST)
+    @ResponseBody
+    public Result addScore(@RequestBody Score score) throws Exception {
+        int resultTotal;
+        resultTotal = scoreService.addScore(score);
+        if (resultTotal > 0) {
+            return ResultGenerator.genSuccessResult();
+        } else {
+            return ResultGenerator.genFailResult("FAIL");
+        }
+    }
+
+    /**
+     * 修改学生成绩
+     *
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value = "updateScore", method = RequestMethod.POST)
+    @ResponseBody
+    public Result updateScore(@RequestBody Score score) throws Exception {
+        int resultTotal;
+        resultTotal = scoreService.updateScore(score);
+        if (resultTotal > 0) {
+            return ResultGenerator.genSuccessResult();
+        } else {
+            return ResultGenerator.genFailResult("FAIL");
+        }
+    }
+
+    /**
+     * 删除
+     *
+     * @param pkids
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value = "/deleteScore/{pkids}", method = RequestMethod.DELETE)
+    @ResponseBody
+    public Result deleteScore(@PathVariable(value = "pkids") String pkids) throws Exception {
+        String[] pkidArr = pkids.split(",");
+        scoreService.deleteScore(pkidArr);
         return ResultGenerator.genSuccessResult();
     }
 }

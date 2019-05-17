@@ -47,4 +47,9 @@ public class StudentServiceImpl implements StudentService {
     public List<Map<String, Object>> getClassList(String majorKey) {
         return studentMapper.getClassList(majorKey);
     }
+
+    @Override
+    public List<Map<String, Object>> getStudentList(String classKey) {
+        return studentMapper.getStudentList(classKey);
+    }
 }

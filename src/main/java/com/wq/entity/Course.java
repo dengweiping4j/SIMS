@@ -5,9 +5,9 @@ public class Course {
 
     private String courseName;
 
-    private String courseMajorkey;
+    private String classKey;
 
-    private String courseTeacherkey;
+    private String teacherKey;
 
     public String getPkid() {
         return pkid;
@@ -25,19 +25,19 @@ public class Course {
         this.courseName = courseName == null ? null : courseName.trim();
     }
 
-    public String getCourseMajorkey() {
-        return courseMajorkey;
+    public String getClassKey() {
+        return classKey;
     }
 
-    public void setCourseMajorkey(String courseMajorkey) {
-        this.courseMajorkey = courseMajorkey == null ? null : courseMajorkey.trim();
+    public void setClassKey(String classKey) {
+        this.classKey = classKey;
     }
 
-    public String getCourseTeacherkey() {
-        return courseTeacherkey;
+    public String getTeacherKey() {
+        return teacherKey;
     }
 
-    public void setCourseTeacherkey(String courseTeacherkey) {
-        this.courseTeacherkey = courseTeacherkey == null ? null : courseTeacherkey.trim();
+    public void setTeacherKey(String teacherKey) {
+        this.teacherKey = teacherKey;
     }
 }

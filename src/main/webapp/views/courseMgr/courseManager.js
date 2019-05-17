@@ -1,4 +1,4 @@
-var url = "/SSAM/baseData";
+var url = "/SSAM/course";
 var method;
 var methodName;
 
@@ -54,25 +54,24 @@ function del() {
 }
 
 function openAddDialog() {
-    $("#dlg").dialog("open").dialog("setTitle", "添加班级信息", 'refresh', "");
+    $("#dlg").dialog("open").dialog("setTitle", "添加课程信息", 'refresh', "");
     findcombobox();
     method = "POST";
-    methodName = "/addClass";
+    methodName = "/addSave";
 }
 
 function save() {
     var pkid = $("#pkid").val();
-    var className = $("#className").val();
-    var departmentKey = $("#departmentKey").combobox("getValue");
-    var majorKey = $("#majorKey").combobox("getValue");
-    var classTutor = $("#classTutor").combobox("getValue");
+    var courseName = $("#courseName").val();
+    var classKey = $("#classKey").combobox("getValue");
+    var teacherKey = $("#teacherKey").combobox("getValue");
     var data = {
         "pkid": pkid,
-        "className": className,
-        "departmentKey": departmentKey,
-        "majorKey": majorKey,
-        "classTutor": classTutor
+        "courseName": courseName,
+        "classKey": classKey,
+        "teacherKey": teacherKey
     };
+
     if ($('#fm').form('validate')) {
         $.ajax({
             type: method,//方法类型
@@ -109,34 +108,20 @@ function openModifyDialog() {
         return;
     }
     var row = selectedRows[0];
-    $("#dlg").dialog("open").dialog("setTitle", "编辑班级信息");
+    $("#dlg").dialog("open").dialog("setTitle", "编辑课程信息");
     findcombobox();
     $('#fm').form('load', row);
     $('#departmentKey').combobox('setValue', row.departmentKey);
     $('#majorKey').combobox('setValue', row.majorKey);
-    $('#classtutor').combobox('setValue', row.classtutor);
+    $('#classKey').combobox('setValue', row.classKey);
+    $('#teacherKey').combobox('setValue', row.teacherKey);
     method = "POST";
-    methodName = "/updateClass";
+    methodName = "/updateSave";
 }
 
 //加载下拉框
 function findcombobox() {
-    //班主任下拉框
-    $.ajax({
-        async: false,
-        type: "post",
-        url: "/SSAM/teacher/getTeacherList",//请求后台数据
-        dataType: "json",
-        success: function (teacherList) {
-            $("#classTutor").combobox({//往下拉框赋值
-                prompt: '请选择...',
-                data: teacherList,
-                valueField: "value",//value值
-                textField: "text",//文本值
-                panelHeight: "auto"
-            })
-        }
-    });
+    //学院下拉框
     $.ajax({
         async: false,
         type: "post",
@@ -180,6 +165,49 @@ function findcombobox() {
         panelHeight: 'auto',//自动高度适合    
         valueField: 'value',
         textField: 'text'
+    });
+    //触发专业选项时  
+    $("#majorKey").combobox({
+        onChange: function () {
+            $("#classKey").combobox('setValue', ''); //清空班级
+            var majorKey = $('#majorKey').combobox('getValue');
+            $("#classKey").combobox("loadData", "");
+            $.ajax({
+                async: false,
+                url: "/SSAM/student/getClassList",
+                cache: false,
+                data: {majorKey: majorKey},
+                type: "POST",
+                dataType: "json",
+                success: function (classList) {
+                    $("#classKey").combobox("loadData", classList);
+                }
+            });
+        }
+    });
+    $('#classKey').combobox({
+        prompt: '请选择...',
+        editable: false, //不可编辑状态    
+        cache: false,
+        panelHeight: 'auto',//自动高度适合    
+        valueField: 'value',
+        textField: 'text'
+    });
+    //教师下拉框
+    $.ajax({
+        async: false,
+        type: "post",
+        url: "/SSAM/teacher/getTeacherList",//请求后台数据
+        dataType: "json",
+        success: function (teacherList) {
+            $("#teacherKey").combobox({//往下拉框赋值
+                prompt: '请选择...',
+                data: teacherList,
+                valueField: "value",//value值
+                textField: "text",//文本值
+                panelHeight: "auto"
+            })
+        }
     });
 }
 

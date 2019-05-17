@@ -4,14 +4,19 @@
     <resultMap id="BaseResultMap" type="com.wq.entity.Course">
         <result column="pkid" jdbcType="VARCHAR" property="pkid"/>
         <result column="course_name" jdbcType="VARCHAR" property="courseName"/>
-        <result column="course_majorkey" jdbcType="VARCHAR" property="courseMajorkey"/>
-        <result column="course_teacherkey" jdbcType="VARCHAR" property="courseTeacherkey"/>
+        <result column="class_key" jdbcType="VARCHAR" property="classKey"/>
+        <result column="teacher_key" jdbcType="VARCHAR" property="teacherKey"/>
     </resultMap>
+    <select id="getCourseList" parameterType="String" resultType="java.util.HashMap">
+        select t.pkid as value,t.course_name as text
+        from course t
+        WHERE t.class_key=#{classKey}
+    </select>
     <insert id="insert" parameterType="com.wq.entity.Course">
-    insert into course (pkid, course_name, course_majorkey, 
-      course_teacherkey)
-    values (#{pkid,jdbcType=VARCHAR}, #{courseName,jdbcType=VARCHAR}, #{courseMajorkey,jdbcType=VARCHAR}, 
-      #{courseTeacherkey,jdbcType=VARCHAR})
+    insert into course (pkid, course_name, class_key, 
+      teacher_key)
+    values (#{pkid,jdbcType=VARCHAR}, #{courseName,jdbcType=VARCHAR}, #{classKey,jdbcType=VARCHAR}, 
+      #{teacherKey,jdbcType=VARCHAR})
   </insert>
     <insert id="insertSelective" parameterType="com.wq.entity.Course">
         insert into course
@@ -22,11 +27,11 @@
             <if test="courseName != null">
                 course_name,
             </if>
-            <if test="courseMajorkey != null">
-                course_majorkey,
+            <if test="classKey != null">
+                class_key,
             </if>
-            <if test="courseTeacherkey != null">
-                course_teacherkey,
+            <if test="teacherKey != null">
+                teacher_key,
             </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -36,12 +41,36 @@
             <if test="courseName != null">
                 #{courseName,jdbcType=VARCHAR},
             </if>
-            <if test="courseMajorkey != null">
-                #{courseMajorkey,jdbcType=VARCHAR},
+            <if test="classKey != null">
+                #{classKey,jdbcType=VARCHAR},
             </if>
-            <if test="courseTeacherkey != null">
-                #{courseTeacherkey,jdbcType=VARCHAR},
+            <if test="teacherKey != null">
+                #{teacherKey,jdbcType=VARCHAR},
             </if>
         </trim>
     </insert>
+    <update id="update" parameterType="com.wq.entity.Course">
+        update course
+        <set>
+            <if test="courseName != null">
+                course_name=#{courseName},
+            </if>
+            <if test="classKey != null">
+                class_key=#{classKey},
+            </if>
+            <if test="teacherKey != null">
+                teacher_key=#{teacherKey},
+            </if>
+        </set>
+        where pkid=#{pkid}
+    </update>
+    <delete id="deleteByPrimaryKey">
+        delete from score
+        <where>
+            pkid
+            <foreach collection="array" item="pkid" open="in (" close=")" separator=",">
+                #{pkid}
+            </foreach>
+        </where>
+    </delete>
 </mapper>
