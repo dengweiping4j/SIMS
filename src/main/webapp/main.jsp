@@ -41,7 +41,7 @@
         }
     </script>
 <body class="easyui-layout">
-<div region="north" style="height: 78px;background-color: #53bdff" valign="middle">
+<div region="north" style="height: 78px;background-color: #547776" valign="middle">
     <table width="100%">
         <tr>
             <td style="font-size: 20px;color:#ffffff;font-family: '微软雅黑';"
