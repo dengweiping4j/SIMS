@@ -31,7 +31,7 @@
         <a href="javascript:openUserAddDialog()" class="easyui-linkbutton"
            iconCls="fa fa-user-plus" plain="true">添加</a> <a
             href="javascript:openUserModifyDialog()" class="easyui-linkbutton"
-            iconCls="icon-edit" plain="true">修改</a> <a
+            iconCls="fa fa-edit" plain="true">修改</a> <a
             href="javascript:deleteUser()" class="easyui-linkbutton"
             iconCls="fa fa-user-times" plain="true">删除</a>
     </div>
