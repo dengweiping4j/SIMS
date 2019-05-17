@@ -59,7 +59,7 @@
 </div>
 <div region="center">
     <div class="easyui-tabs" fit="true" border="false" id="tabs">
-        <div title="首页" data-options="iconCls:'icon-home'">
+        <div title="首页" data-options="iconCls:'fa fa-home'">
             <div align="center" style="padding-top: 50px">
                 <font color="grey" size="10">学生信息管理系统</font>
             </div>

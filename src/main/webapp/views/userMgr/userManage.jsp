@@ -39,7 +39,7 @@
         &nbsp;用户名：&nbsp;<input type="text" id="s_userName" size="20" class="easyui-textbox"
                                onkeydown="if(event.keyCode==13) searchUser()"/> <a
             href="javascript:searchUser()" class="easyui-linkbutton"
-            iconCls="icon-search" plain="true">搜索</a>
+            iconCls="fa fa-search" plain="true">搜索</a>
     </div>
 </div>
 
@@ -107,11 +107,11 @@
     <a href="javascript:closeUserDialog()"
        class="easyui-linkbutton" iconCls="icon-cancel">关闭</a>
 </div>
-<div id="update-buttons">
-    <a href="javascript:updateSave()" class="easyui-linkbutton"
-       iconCls="icon-ok">保存</a>
-    <a href="javascript:closeUserDialog()"
-       class="easyui-linkbutton" iconCls="icon-cancel">关闭</a>
+<div id="dlg-buttons">
+    <a href="javascript:save()" class="easyui-linkbutton"
+       iconCls="fa fa-save">保存</a>
+    <a href="javascript:closeDialog()"
+       class="easyui-linkbutton" iconCls="fa fa-close">关闭</a>
 </div>
 </body>
 </html>

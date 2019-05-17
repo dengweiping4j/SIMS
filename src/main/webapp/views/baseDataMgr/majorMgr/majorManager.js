@@ -19,7 +19,7 @@ function del() {
         strPkids.push(selectedRows[i].pkid);
     }
     var pkids = strPkids.join(",");
-    $.messager.confirm("系统提示", "删除专业会同时删除对应的班级", function (r) {
+    $.messager.confirm("系统提示", "删除专业将同时删除对应班级", function (r) {
         if (r) {
             $.ajax({
                 type: "DELETE",//方法类型

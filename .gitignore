@@ -24,3 +24,5 @@ target
 pom.xml
 jdbc-druid-config.properties
 generatorConfig.xml
+pom.xml
+GeneratorSqlmap.java

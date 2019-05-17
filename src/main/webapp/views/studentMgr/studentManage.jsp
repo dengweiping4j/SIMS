@@ -47,7 +47,7 @@
         <input type="text" id="s_xm" size="20" class="easyui-textbox"
                onkeydown="if(event.keyCode==13) search()"/> <a
             href="javascript:search()" class="easyui-linkbutton"
-            iconCls="icon-search" plain="true">搜索</a>
+            iconCls="fa fa-search" plain="true">搜索</a>
     </div>
 </div>
 

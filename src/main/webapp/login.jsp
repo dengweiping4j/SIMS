@@ -23,19 +23,20 @@
 
 <div class="middle-box text-center loginscreen  animated fadeInDown">
     <div>
-        <br/><br/><br/><br/><br/><br/>
+        <br/><br/><br/><br/>
         <div>
             <h1 class="logo-name"><img src="images/WQStudio.png" width="180px"/></h1>
         </div>
+        <br/><br/>
         <h3>欢迎使用 学生信息管理系统</h3>
         <h4>Student Information Management System</h4><br/>
         <form class="m-t" role="form" id="adminlogin" method="post"
               name="adminlogin" onsubmit="return false" action="##">
             <div class="form-group">
-                <input type="email" class="form-control" placeholder="用户名" name="userId" id="userId" required="">
+                <input type="email" class="form-control" placeholder="用户名" name="userId" id="userId">
             </div>
             <div class="form-group">
-                <input type="password" class="form-control" placeholder="密码" name="password" id="password" required="">
+                <input type="password" class="form-control" placeholder="密码" name="password" id="password">
             </div>
             <button type="button" class="btn btn-primary block full-width m-b" onclick="javascript:login();">登 录
             </button>

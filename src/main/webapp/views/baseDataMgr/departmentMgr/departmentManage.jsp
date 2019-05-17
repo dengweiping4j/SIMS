@@ -38,7 +38,7 @@
         <input type="text" id="s_xm" size="20" class="easyui-textbox"
                onkeydown="if(event.keyCode==13) search()"/> <a
             href="javascript:search()" class="easyui-linkbutton"
-            iconCls="icon-search" plain="true">搜索</a>
+            iconCls="fa fa-search" plain="true">搜索</a>
     </div>
 </div>
 
@@ -47,7 +47,7 @@
      buttons="#dlg-buttons">
     <form id="fm" method="post">
         <input type="hidden" id="pkid" name="pkid">
-        <table cellspacing="8px">
+        <table cellspacing="8px" style="margin-top: 25px">
             <tr>
                 <td>学院名称：</td>
                 <td><input type="text" id="department_name" name="department_name"
@@ -61,9 +61,9 @@
 
 <div id="dlg-buttons">
     <a href="javascript:save()" class="easyui-linkbutton"
-       iconCls="icon-ok">保存</a>
+       iconCls="fa fa-save">保存</a>
     <a href="javascript:closeDialog()"
-       class="easyui-linkbutton" iconCls="icon-cancel">关闭</a>
+       class="easyui-linkbutton" iconCls="fa fa-close">关闭</a>
 </div>
 </body>
 </html>
