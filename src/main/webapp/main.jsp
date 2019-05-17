@@ -69,51 +69,51 @@
              style="padding:10px;border:none;">
             <a href="javascript:openTab(' 学生信息','studentMgr/studentManage.jsp')"
                class="easyui-linkbutton"
-               data-options="plain:true,iconCls:'icon-my'" style="width: 150px;">
+               data-options="plain:true,iconCls:'fa fa-address-book'" style="width: 150px;">
                 学生信息</a>
             <a href="javascript:openTab(' 成绩管理','studentMgr/scoreManage.jsp')"
                class="easyui-linkbutton"
-               data-options="plain:true,iconCls:'icon-man'" style="width: 150px;">
+               data-options="plain:true,iconCls:'fa fa-bar-chart-o'" style="width: 150px;">
                 成绩管理</a>
         </div>
         <div title="教师管理" data-options="iconCls:'icon-item'"
              style="padding:10px;border:none;">
             <a href="javascript:openTab(' 教师信息','teacherMgr/teacherManage.jsp')"
                class="easyui-linkbutton"
-               data-options="plain:true,iconCls:'icon-my'" style="width: 150px;">
+               data-options="plain:true,iconCls:'fa fa-address-book'" style="width: 150px;">
                 教师信息</a>
         </div>
         <div title="课程管理" data-options="iconCls:'icon-item'"
              style="padding:10px;border:none;">
             <a href="javascript:openTab(' 课程信息','courseMgr/courseManage.jsp')"
                class="easyui-linkbutton"
-               data-options="plain:true,iconCls:'icon-my'" style="width: 150px;">
+               data-options="plain:true,iconCls:'fa fa-calendar-o'" style="width: 150px;">
                 课程信息</a>
         </div>
         <div title="基础数据管理" data-options="iconCls:'icon-item'"
              style="padding:10px;border:none;">
             <a href="javascript:openTab(' 学院信息','baseDataMgr/departmentMgr/departmentManage.jsp')"
                class="easyui-linkbutton"
-               data-options="plain:true,iconCls:'icon-my'" style="width: 150px;">
+               data-options="plain:true,iconCls:'fa fa-sitemap'" style="width: 150px;">
                 学院信息</a>
             <a href="javascript:openTab(' 专业信息','baseDataMgr/majorMgr/majorManage.jsp')"
                class="easyui-linkbutton"
-               data-options="plain:true,iconCls:'icon-man'" style="width: 150px;">
+               data-options="plain:true,iconCls:'fa fa-balance-scale'" style="width: 150px;">
                 专业信息</a>
             <a href="javascript:openTab(' 班级信息','baseDataMgr/classMgr/classManage.jsp')"
                class="easyui-linkbutton"
-               data-options="plain:true,iconCls:'icon-man'" style="width: 150px;">
+               data-options="plain:true,iconCls:'fa fa-users'" style="width: 150px;">
                 班级信息</a>
         </div>
         <div title="系统管理" data-options="iconCls:'icon-item'"
              style="padding:10px;border:none;">
             <a href="javascript:openTab(' 用户管理','userMgr/userManage.jsp','icon-man')"
                class="easyui-linkbutton"
-               data-options="plain:true,iconCls:'icon-lxr'" style="width: 150px;">
+               data-options="plain:true,iconCls:'fa fa-user-o'" style="width: 150px;">
                 用户管理</a>
             <a href="javascript:logout()"
                class="easyui-linkbutton"
-               data-options="plain:true,iconCls:'icon-exit'"
+               data-options="plain:true,iconCls:'fa fa-sign-out'"
                style="width: 150px;">
                 安全退出</a>
         </div>

@@ -25,11 +25,11 @@
 <div id="tb">
     <div>
         <a href="javascript:openUserAddDialog()" class="easyui-linkbutton"
-           iconCls="icon-add" plain="true">添加</a> <a
+           iconCls="fa fa-user-plus" plain="true">添加</a> <a
             href="javascript:openUserModifyDialog()" class="easyui-linkbutton"
             iconCls="icon-edit" plain="true">修改</a> <a
             href="javascript:deleteUser()" class="easyui-linkbutton"
-            iconCls="icon-remove" plain="true">删除</a>
+            iconCls="fa fa-user-times" plain="true">删除</a>
     </div>
     <div>
         &nbsp;用户名：&nbsp;<input type="text" id="s_userName" size="20" class="easyui-textbox"

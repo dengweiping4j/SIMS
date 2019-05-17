@@ -29,11 +29,11 @@
 <div id="tb">
     <div>
         <a href="javascript:openAddDialog()" class="easyui-linkbutton"
-           iconCls="icon-add" plain="true">添加</a>
+           iconCls="fa fa-plus-square" plain="true">添加</a>
         <a href="javascript:openModifyDialog()" class="easyui-linkbutton"
-           iconCls="icon-edit" plain="true">修改</a>
+           iconCls="fa fa-edit" plain="true">修改</a>
         <a href="javascript:del()" class="easyui-linkbutton"
-           iconCls="icon-remove" plain="true">删除</a>
+           iconCls="fa fa-trash" plain="true">删除</a>
     </div>
     <div>
         &nbsp;教师姓名：&nbsp;

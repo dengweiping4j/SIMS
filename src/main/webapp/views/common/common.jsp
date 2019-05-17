@@ -12,6 +12,7 @@
     <link rel="icon" href="${pageContext.request.contextPath}/images/my.ico" type="image/x-icon"/>
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/my.ico" type="image/x-icon"/>
     <link rel="bookmark" href="${pageContext.request.contextPath}/images/my.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/font-awesome-4.7.0/css/font-awesome.min.css">
     <script type="text/javascript"
             src="${pageContext.request.contextPath}/jquery-easyui-1.5.1/jquery.min.js"></script>
     <script type="text/javascript"
